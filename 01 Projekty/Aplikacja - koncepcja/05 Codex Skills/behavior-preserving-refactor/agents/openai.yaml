@@ -1,0 +1,4 @@
+interface:
+  display_name: "Behavior-Preserving Refactor"
+  short_description: "Improve structure without changing runtime behavior"
+  default_prompt: "Use $behavior-preserving-refactor to improve internal structure while preserving observable behavior and proving that with focused verification."

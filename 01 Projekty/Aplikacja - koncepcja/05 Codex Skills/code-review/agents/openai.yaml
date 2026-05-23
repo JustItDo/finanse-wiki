@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Statically review code, diffs, and technical plans"
+  default_prompt: "Use $code-review to review code, a diff, a PR, or a technical plan for correctness, regressions, and risk."

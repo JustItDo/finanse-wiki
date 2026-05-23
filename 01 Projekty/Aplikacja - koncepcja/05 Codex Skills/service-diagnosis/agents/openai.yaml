@@ -1,0 +1,4 @@
+interface:
+  display_name: "Service Diagnosis"
+  short_description: "Diagnose servers, containers, and service failures"
+  default_prompt: "Use $service-diagnosis to find an evidence-backed root cause for a server, container, or service problem before fixing it."

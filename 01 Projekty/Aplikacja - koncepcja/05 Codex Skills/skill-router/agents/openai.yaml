@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Router"
+  short_description: "Choose the right project skill for the request"
+  default_prompt: "Use $skill-router to choose exactly one of the project skills before doing the task."
