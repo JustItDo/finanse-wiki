@@ -1,5 +1,14 @@
 # Pomysły produktowe
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Funkcje aplikacji]]
+- [[Sukces MVP]]
+- [[../04 Plan/Roadmapa|Roadmapa]]
+- [[../04 Plan/Backlog|Backlog]]
+
 ## Kierunek produktu
 Aplikacja nie powinna być tylko rejestrem wydatków.
 

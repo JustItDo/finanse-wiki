@@ -1,5 +1,13 @@
 # Założenia startowe
 
+## Powiązane notatki
+
+- [[Mapa projektu]]
+- [[01 Wizja/Start - brief projektu|Brief projektu]]
+- [[02 Produkt/MVP]]
+- [[03 Technologia/Decyzje techniczne]]
+- [[04 Plan/Roadmapa]]
+
 ## O czym jest ten projekt
 Budujemy aplikację do prostego zarządzania finansami osobistymi.
 

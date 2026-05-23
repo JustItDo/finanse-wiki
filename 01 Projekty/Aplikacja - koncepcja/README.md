@@ -2,6 +2,16 @@
 
 To jest główny obszar roboczy dla pomysłu na aplikację.
 
+## Mapa
+
+- [[Mapa projektu]]
+- [[00 Założenia startowe]]
+- [[01 Wizja/Start - brief projektu|Brief projektu]]
+- [[02 Produkt/MVP]]
+- [[03 Technologia/Decyzje techniczne]]
+- [[04 Plan/Roadmapa]]
+- [[START SESJI CODEX]]
+
 ## Struktura
 
 - `01 Wizja` - po co powstaje aplikacja i jaki problem rozwiązuje
@@ -20,10 +30,10 @@ To jest główny obszar roboczy dla pomysłu na aplikację.
 
 ## Najważniejsze notatki
 
-- `00 Założenia startowe`
-- `01 Wizja/Start - brief projektu`
-- `02 Produkt/MVP`
-- `02 Produkt/Pomysły produktowe`
-- `99 Robocze/Rekomendacje i alternatywy`
-- `99 Robocze/Analizy decyzyjne`
-- `99 Robocze/Propozycje z rozmowy`
+- [[00 Założenia startowe]]
+- [[01 Wizja/Start - brief projektu|Brief projektu]]
+- [[02 Produkt/MVP]]
+- [[02 Produkt/Pomysły produktowe]]
+- [[03 Technologia/Decyzje techniczne]]
+- [[04 Plan/Roadmapa]]
+- [[04 Plan/Backlog]]

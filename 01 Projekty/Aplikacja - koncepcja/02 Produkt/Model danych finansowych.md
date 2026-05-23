@@ -1,5 +1,15 @@
 # Model danych finansowych
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Kategorie]]
+- [[Flow OCR i screenów]]
+- [[Źródła przychodów]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+- [[../04 Plan/Updatey wdrożeniowe/00.2 Lokalna baza i modele|Update 0.2 - Lokalna baza i modele]]
+
 ## Cel
 Ten punkt określa, jakie informacje aplikacja musi przechowywać o wydatkach, przychodach, załącznikach, kategoriach i budżetach.
 

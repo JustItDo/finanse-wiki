@@ -1,5 +1,16 @@
 # Model budżetu
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Kategorie]]
+- [[Źródła przychodów]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+- [[../04 Plan/Updatey wdrożeniowe/00.3 Kategorie i budżet startowy|Update 0.3 - Kategorie i budżet startowy]]
+- [[../04 Plan/Updatey wdrożeniowe/03.0 Budżety|Update 3.0 - Budżety]]
+- [[../04 Plan/Updatey wdrożeniowe/03.2 Oszczędności|Update 3.2 - Oszczędności]]
+
 ## Wybrany model na start
 Wybrany został `Model 2: Zbalansowany`.
 

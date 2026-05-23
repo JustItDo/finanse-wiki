@@ -1,5 +1,16 @@
 # User flow
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Ekrany aplikacji]]
+- [[Główny ekran]]
+- [[Flow OCR i screenów]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+- [[../04 Plan/Updatey wdrożeniowe/01.0 Ręczne dodawanie wydatku|Update 1.0 - ręczne dodawanie wydatku]]
+- [[../04 Plan/Updatey wdrożeniowe/02.0 OCR i dodawanie zdjęcia|Update 2.0 - OCR i dodawanie zdjęcia]]
+
 ## Decyzja
 Wybrany model user flow dla MVP to `Model 2: Zbalansowany`.
 

@@ -1,5 +1,15 @@
 # Kategorie
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Model budżetu]]
+- [[Model danych finansowych]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+- [[../04 Plan/Backlog|Backlog]]
+- [[../04 Plan/Updatey wdrożeniowe/00.3 Kategorie i budżet startowy|Update 0.3 - Kategorie i budżet startowy]]
+
 ## Cel punktu 3
 Ustalić, jakie kategorie finansowe będą dostępne w aplikacji na start i jak bardzo elastyczny ma być ten system.
 

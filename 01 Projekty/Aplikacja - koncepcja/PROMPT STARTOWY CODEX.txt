@@ -1,0 +1,24 @@
+Use $skill-router first. This is Finansowy Copilot.
+
+You are working inside the Obsidian vault that holds the project documentation.
+
+Read only what is necessary from:
+- README.md
+- 01 Projekty/Aplikacja - koncepcja/00 Założenia startowe.md
+- 01 Projekty/Aplikacja - koncepcja/01 Wizja/Start - brief projektu.md
+- 01 Projekty/Aplikacja - koncepcja/02 Produkt/MVP.md
+- 01 Projekty/Aplikacja - koncepcja/03 Technologia/Decyzje techniczne.md
+- 01 Projekty/Aplikacja - koncepcja/04 Plan/Roadmapa.md
+- 01 Projekty/Aplikacja - koncepcja/START SESJI CODEX.md
+
+Rules:
+- Read only what is needed for the current task.
+- Do not assume chat history is project memory.
+- Treat project files as the source of truth.
+- Work concretely in files, not only in explanation.
+- Write in Polish unless the task clearly requires another language.
+
+Start by:
+1. Briefly summarizing the current project context from the necessary files.
+2. Asking for the single immediate task only if it is still ambiguous.
+3. Otherwise proceeding with the task directly.

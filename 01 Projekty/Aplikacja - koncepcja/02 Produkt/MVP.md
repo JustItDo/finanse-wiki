@@ -1,5 +1,17 @@
 # MVP
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[../01 Wizja/Start - brief projektu|Brief projektu]]
+- [[User flow]]
+- [[Ekrany aplikacji]]
+- [[Model danych finansowych]]
+- [[Flow OCR i screenów]]
+- [[../03 Technologia/Decyzje techniczne|Decyzje techniczne]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+- [[../04 Plan/Roadmapa|Roadmapa]]
+
 ## Cel MVP
 Zbudować prostą, używalną aplikację do codziennego zarządzania finansami prywatnymi, która pozwala szybko dodawać dane, oglądać podstawowe analizy i lepiej kontrolować oszczędności.
 

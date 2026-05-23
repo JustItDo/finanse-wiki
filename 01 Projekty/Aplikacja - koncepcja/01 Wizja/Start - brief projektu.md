@@ -1,5 +1,14 @@
 # Start - brief projektu
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[../00 Założenia startowe|Założenia startowe]]
+- [[../02 Produkt/MVP|MVP]]
+- [[../02 Produkt/Użytkownicy i scenariusze|Użytkownicy i scenariusze]]
+- [[../03 Technologia/Decyzje techniczne|Decyzje techniczne]]
+- [[../04 Plan/Roadmapa|Roadmapa]]
+
 ## Nazwa robocza
 Finansowy Copilot
 

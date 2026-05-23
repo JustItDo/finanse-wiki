@@ -1,5 +1,17 @@
 # Ekrany aplikacji
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[User flow]]
+- [[Lista ekranów]]
+- [[Główny ekran]]
+- [[Flow OCR i screenów]]
+- [[../04 Plan/Updatey wdrożeniowe/01.2 Dashboard MVP|Update 1.2 - Dashboard MVP]]
+- [[../04 Plan/Updatey wdrożeniowe/01.3 Historia transakcji|Update 1.3 - Historia transakcji]]
+- [[../04 Plan/Updatey wdrożeniowe/02.1 Korekta OCR|Update 2.1 - Korekta OCR]]
+
 ## Cel
 Ta notatka opisuje ekran po ekranie, jak ma wyglądać MVP aplikacji.
 

@@ -1,10 +1,17 @@
 # Backlog
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[Roadmapa]]
+- [[Plan updateów wdrożeniowych]]
+- [[../02 Produkt/MVP|MVP]]
+- [[../02 Produkt/User flow|User flow]]
+- [[../03 Technologia/Decyzje techniczne|Decyzje techniczne]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+
 ## Do omówienia
-- lista ekranów aplikacji
-- dokładne user flow dla najważniejszych akcji
 - dokładna lista kategorii startowych
-- finalny stack technologiczny
 
 ## Do rozpisania
 - jak ma działać szybkie ręczne dodawanie wydatku
@@ -14,5 +21,10 @@
 - jak przygotować model danych pod późniejszy sync i chmurę
 
 ## Gotowe do realizacji
+- plan updateów wdrożeniowych
+- lista ekranów aplikacji
+- user flow
+- finalny stack technologiczny
+- model danych implementacyjny
 
 ## Zrobione

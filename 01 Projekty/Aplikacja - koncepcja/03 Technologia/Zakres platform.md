@@ -1,5 +1,15 @@
 # Zakres platform
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[Decyzje techniczne]]
+- [[Stack technologiczny]]
+- [[Prywatność i bezpieczeństwo]]
+- [[../02 Produkt/Główny ekran|Główny ekran]]
+- [[../04 Plan/Updatey wdrożeniowe/00.1 Start projektu|Update 0.1 - Start projektu]]
+- [[../04 Plan/Updatey wdrożeniowe/04.2 Test MVP|Update 4.2 - Test MVP]]
+
 ## Decyzja
 Wybrany model zakresu platform dla MVP to `Model 2: Mobile-first + sensowny komputer`.
 

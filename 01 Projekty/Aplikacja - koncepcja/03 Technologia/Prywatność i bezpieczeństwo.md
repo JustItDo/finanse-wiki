@@ -1,5 +1,14 @@
 # Prywatność i bezpieczeństwo
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[Decyzje techniczne]]
+- [[Offline i chmura]]
+- [[Zakres platform]]
+- [[../02 Produkt/Flow OCR i screenów|Flow OCR i screenów]]
+- [[../04 Plan/Updatey wdrożeniowe/04.0 Bezpieczeństwo|Update 4.0 - Bezpieczeństwo]]
+
 ## Decyzja
 Wybrany model prywatności i bezpieczeństwa dla MVP to `Model 2: Zbalansowany`.
 

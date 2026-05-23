@@ -1,5 +1,16 @@
 # Funkcje aplikacji
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Pomysły produktowe]]
+- [[Lista ekranów]]
+- [[User flow]]
+- [[Sukces MVP]]
+- [[../04 Plan/Roadmapa|Roadmapa]]
+- [[../04 Plan/Backlog|Backlog]]
+
 ## Must have
 - ręczne dodawanie przychodów i wydatków w kilku prostych krokach
 - kategorie wydatków i przychodów

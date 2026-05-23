@@ -1,5 +1,15 @@
 # Źródła przychodów
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Model budżetu]]
+- [[Model danych finansowych]]
+- [[../03 Technologia/Model danych implementacyjny|Model danych implementacyjny]]
+- [[../04 Plan/Updatey wdrożeniowe/01.1 Ręczne dodawanie przychodu|Update 1.1 - Ręczne dodawanie przychodu]]
+- [[../04 Plan/Updatey wdrożeniowe/03.2 Oszczędności|Update 3.2 - Oszczędności]]
+
 ## Decyzja
 Wybrany model źródeł przychodów dla MVP to `Model 2: Zbalansowany`.
 

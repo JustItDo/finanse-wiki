@@ -1,5 +1,14 @@
 # Sukces MVP
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[MVP]]
+- [[Funkcje aplikacji]]
+- [[Główny ekran]]
+- [[Pomysły produktowe]]
+- [[../04 Plan/Updatey wdrożeniowe/04.2 Test MVP|Update 4.2 - Test MVP]]
+
 ## Decyzja
 Wybrany model sukcesu MVP to `Model 2: Sukces użytkowy`.
 

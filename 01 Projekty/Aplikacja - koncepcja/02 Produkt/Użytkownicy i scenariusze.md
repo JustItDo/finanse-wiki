@@ -1,5 +1,14 @@
 # Użytkownicy i scenariusze
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[../01 Wizja/Start - brief projektu|Brief projektu]]
+- [[User flow]]
+- [[Flow OCR i screenów]]
+- [[Sukces MVP]]
+- [[../04 Plan/Updatey wdrożeniowe/04.2 Test MVP|Update 4.2 - Test MVP]]
+
 ## Typy użytkowników
 - użytkownik główny: Ty, osoba zarządzająca własnymi finansami
 - potencjalny przyszły użytkownik: osoba prywatna, która chce prostego narzędzia do kontroli wydatków i oszczędzania

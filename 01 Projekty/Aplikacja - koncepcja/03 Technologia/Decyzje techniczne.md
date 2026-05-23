@@ -1,5 +1,17 @@
 # Decyzje techniczne
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[../02 Produkt/MVP|MVP]]
+- [[Stack technologiczny]]
+- [[Model danych implementacyjny]]
+- [[Offline i chmura]]
+- [[Prywatność i bezpieczeństwo]]
+- [[Zakres platform]]
+- [[../04 Plan/Roadmapa|Roadmapa]]
+- [[../04 Plan/Backlog|Backlog]]
+
 ## Decyzje produktowo-techniczne
 - model budżetu dla MVP: `Model 2: Zbalansowany`
 - model danych finansowych dla MVP: `Model 2: Zbalansowany`

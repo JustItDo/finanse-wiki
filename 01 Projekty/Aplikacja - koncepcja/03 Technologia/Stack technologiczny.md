@@ -1,5 +1,15 @@
 # Stack technologiczny
 
+## Powiązane notatki
+
+- [[../Mapa projektu|Mapa projektu]]
+- [[Decyzje techniczne]]
+- [[Offline i chmura]]
+- [[Zakres platform]]
+- [[../02 Produkt/Flow OCR i screenów|Flow OCR i screenów]]
+- [[../04 Plan/Updatey wdrożeniowe/00.1 Start projektu|Update 0.1 - Start projektu]]
+- [[../04 Plan/Updatey wdrożeniowe/02.0 OCR i dodawanie zdjęcia|Update 2.0 - OCR i dodawanie zdjęcia]]
+
 ## Decyzja
 Wybrany stack technologiczny dla MVP to `Model 2: Mobile-first z Expo i React Native`.
 
