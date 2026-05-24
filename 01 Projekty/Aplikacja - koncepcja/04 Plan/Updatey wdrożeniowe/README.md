@@ -80,17 +80,22 @@ Jeśli zaczynasz development teraz, zacznij od:
   - wykonane lokalnie w repo `finanse-app`
   - obejmuje pełny ekran budżetów z porządkiem sekcji, procentem wykorzystania, sygnałami ryzyka i wspólną logiką statusów poza UI
   - obejmuje utrzymanie konfiguracji limitów i budżetu miesiąca bez rozdzielania osobnego flow danych
+- `03.1 Analizy`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje ekran analiz z przełącznikiem bieżącego i poprzedniego miesiąca
+  - obejmuje wykres udziału kategorii, największe kategorie kosztów i trend dzienny wydatków
+  - obejmuje lekką warstwę agregacji analitycznej poza komponentami UI
 
 ## Stan Git a stan wdrożenia
 
 - stan wdrożenia `00.1-01.3` jest już zapisany w historii repo `finanse-app`
 - nowsze lokalne commity obejmują `01.3`, pierwszy commit `02.0-02.1` oraz późniejszą korektę budżetów
-- lokalny workspace ma już domknięte także poprawki OCR, `02.2`, `03.0` i ręcznie sprawdzony flow OCR na emulatorze
+- lokalny workspace ma już domknięte także poprawki OCR, `02.2`, `03.0`, `03.1` i ręcznie sprawdzony flow OCR na emulatorze
 
 ## Otwarte decyzje i ryzyka
 - decyzja, czy `Wybierz paragon z galerii` zostaje jako normalna ścieżka MVP, czy tylko wygodny fallback testowy
 - decyzja, czy web rozwijasz równolegle od dnia 1, czy tylko utrzymujesz zgodność techniczną
-- przed `03.1` warto zrobić krótki ręczny smoke test budżetów na większej liczbie kategorii i danych z OCR
+- przed `03.2` warto zrobić krótki ręczny smoke test analiz na danych ręcznych i po OCR
 
 ## Dokument źródłowy
 Pełny plan zbiorczy pozostaje w [Plan updateów wdrożeniowych](../Plan updateów wdrożeniowych.md).

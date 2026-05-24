@@ -150,6 +150,17 @@ Ma dawać szybki obraz:
 - następny krok:
   - `03.1 Analizy`
 
+### `03.1 Analizy`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - dodany został osobny ekran `Analizy` w nawigacji tabowej w miejsce placeholdera ustawień
+  - analizy pokazują udział wydatków według kategorii, największe kategorie kosztów i trend dzienny wydatków
+  - zakres danych można przełączyć między bieżącym i poprzednim miesiącem
+  - logika agregacji została wyniesiona poza UI do wspólnej warstwy danych i korzysta z przygotowanych sum kategorii oraz nowych sum dziennych
+- następny krok:
+  - `03.2 Oszczędności`
+
 ### `03.x Doprecyzowanie OCR po teście ręcznym`
 
 - status: `wykonane lokalnie w repo finanse-app`
@@ -159,7 +170,7 @@ Ma dawać szybki obraz:
   - parser screenów został doprecyzowany o anchory płatności, filtrowanie szumu bankowego i karanie małych opłat/prowizji
   - po tej poprawce ręcznie sprawdzone przykłady zaczęły znowu zwracać poprawne kwoty
 - następny krok:
-  - `03.1 Analizy`
+  - `03.2 Oszczędności`
 
 ### Budżety przychodów
 
