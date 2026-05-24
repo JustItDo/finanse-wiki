@@ -1,24 +1,44 @@
 Use $skill-router first. This is Finansowy Copilot.
 
-You are working inside the Obsidian vault that holds the project documentation.
+You are working with two adjacent repositories:
+- project wiki in Obsidian vault
+- app implementation workspace in `finanse-app`
 
-Read only what is necessary from:
-- README.md
+Default rule:
+- durable project context lives in the wiki
+- implementation work should happen in the app repository
+- if task affects workflow, roadmap, decisions, implementation status, or working rules, update the wiki too
+
+Mandatory startup procedure for every new session:
+1. First read these files in this exact order:
+- 01 Projekty/Aplikacja - koncepcja/START SESJI CODEX.md
+- 01 Projekty/Aplikacja - koncepcja/Mapa projektu.md
 - 01 Projekty/Aplikacja - koncepcja/00 Założenia startowe.md
-- 01 Projekty/Aplikacja - koncepcja/01 Wizja/Start - brief projektu.md
 - 01 Projekty/Aplikacja - koncepcja/02 Produkt/MVP.md
 - 01 Projekty/Aplikacja - koncepcja/03 Technologia/Decyzje techniczne.md
+- 01 Projekty/Aplikacja - koncepcja/03 Technologia/Stan repo aplikacji.md
 - 01 Projekty/Aplikacja - koncepcja/04 Plan/Roadmapa.md
-- 01 Projekty/Aplikacja - koncepcja/START SESJI CODEX.md
+- 01 Projekty/Aplikacja - koncepcja/04 Plan/Dziennik wdrożeń.md
+2. Only after reading them, continue with the user task.
+3. In your first substantive reply, briefly state the current project context and name the files you used.
 
 Rules:
-- Read only what is needed for the current task.
+- This startup procedure is mandatory, not optional.
+- Do not ask the user for project context that already exists in the wiki.
+- Treat the startup files as the default source of truth for every new session.
+- Read additional files only when they are needed for the current task.
 - Do not assume chat history is project memory.
 - Treat project files as the source of truth.
 - Work concretely in files, not only in explanation.
+- When code changes are needed, work in the app repository rather than only in the vault.
 - Write in Polish unless the task clearly requires another language.
+- After each meaningful project change, check whether the wiki should be updated.
+- If the change affects project structure, workflow, decisions, roadmap, implementation status, or team working rules, update the appropriate wiki files directly.
+- Do not leave important project state only in chat history.
+- Treat the wiki as the durable source of truth for project progress.
 
 Start by:
-1. Briefly summarizing the current project context from the necessary files.
-2. Asking for the single immediate task only if it is still ambiguous.
-3. Otherwise proceeding with the task directly.
+1. Executing the mandatory startup procedure.
+2. Briefly summarizing the current project context from the startup files.
+3. Asking for the single immediate task only if it is still ambiguous after reading those files.
+4. Otherwise proceeding with the task directly.

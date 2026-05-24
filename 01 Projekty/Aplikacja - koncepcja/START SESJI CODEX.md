@@ -13,9 +13,17 @@
 ## Co jest gotowe
 
 - projekt `Finansowy Copilot` ma uporządkowaną dokumentację w vaultcie
-- repo Git zostało zainicjalizowane dla tego vaulta
-- pierwszy commit został utworzony:
+- repo `finanse-wiki` działa na gałęzi `main`
+- repo `finanse-app` działa na gałęzi `master`
+- ostatnie commity w `finanse-wiki`:
+  - `366be00` `Build finanse-wiki project structure and navigation`
   - `3b089ff` `Initialize project context, planning notes, and Codex skills`
+- ostatni commit w `finanse-app`:
+  - `08c1374` `Initial commit`
+- w workspace aplikacji są już wdrożone, ale jeszcze nieudokumentowane w historii Git aplikacji:
+  - `00.1 Start projektu`
+  - `00.2 Lokalna baza i modele`
+  - `00.3 Kategorie i budżet startowy`
 - `.obsidian/` i `99 Robocze/` są wykluczone z Git przez `.gitignore`
 
 ## Gdzie jest kontekst projektu
@@ -27,8 +35,24 @@ Najważniejsze pliki do czytania tylko wtedy, gdy są potrzebne do zadania:
 - `01 Wizja/Start - brief projektu.md`
 - `02 Produkt/MVP.md`
 - `03 Technologia/Decyzje techniczne.md`
+- `03 Technologia/Stan repo aplikacji.md`
 - `04 Plan/Roadmapa.md`
+- `04 Plan/Updatey wdrożeniowe/README.md`
+- `04 Plan/Dziennik wdrożeń.md`
 - `05 Codex Skills/`
+
+## Gdzie są repozytoria
+
+- wiki projektu:
+  - `../Obsidian Vault`
+- aplikacja:
+  - `../finanse-app` albo katalog otwarty jako workspace implementacyjny
+
+Najważniejsza zasada:
+
+- trwały kontekst projektu zapisuj w wiki
+- zmiany kodowe wykonuj w repo aplikacji
+- jeżeli sesja zmienia decyzje, status wdrożenia albo workflow, wróć na koniec do wiki i dopisz stan
 
 ## Jakie skille są przygotowane
 
@@ -46,11 +70,15 @@ Domyślny prompt startowy projektu jest zapisany w:
 
 - `01 Projekty/Aplikacja - koncepcja/PROMPT STARTOWY CODEX.txt`
 
-Najwygodniejszy start w VS Code:
+Najwygodniejszy start w VS Code dla repo aplikacji:
 
-- uruchom task `Codex: Finansowy Copilot`
+- uruchom task `Codex: Finanse`
 - task odpala lokalny skrypt `scripts/start-codex-finanse.sh`
 - ten skrypt uruchamia `codex` z gotowym promptem projektu
+- skrypt dodaje też kontekst:
+  - repo implementacyjne to bieżący workspace aplikacji
+  - wiki projektu jest dostępne obok jako dodatkowy katalog
+  - kod zmieniamy w `finanse-app`, a wiki tylko wtedy, gdy zadanie tego wymaga
 
 Jeżeli uruchamiasz sesję ręcznie, na początku nowego czatu wklej:
 
@@ -66,12 +94,13 @@ Use $skill-router first. This is Finansowy Copilot. Project context is in:
 Read only what is necessary for the task. Then continue with: [tu wpisz zadanie].
 ```
 
-## Workflow Obsidian <-> VS Code
+## Workflow Obsidian <-> VS Code <-> Codex
 
 Podział ról:
 
 - Obsidian = decyzje, zakres, backlog, briefy, notatki z sesji
 - VS Code = wykonanie, kod, testy, integracje, praca z Codexem
+- Codex = realizacja jednego konkretnego zadania w plikach, z minimalnym potrzebnym kontekstem
 
 Zasada:
 
@@ -79,6 +108,7 @@ Zasada:
 - najpierw przygotuj notatkę zadania w Obsidianie
 - potem uruchom Codexa w VS Code z odwołaniem do konkretnych plików
 - po zakończeniu pracy wróć do Obsidiana i zapisz wynik sesji
+- jeżeli sesja dotyczy aplikacji, zaczynaj z repo `finanse-app`, a nie z poziomu samego vaultu
 
 ## Jak ma wyglądać obieg pracy
 
@@ -180,8 +210,85 @@ Po każdej istotnej sesji zaktualizuj w Obsidianie przynajmniej jedno z poniższ
 - `04 Plan/Roadmapa.md`
 - odpowiedni plik w `02 Produkt/`
 - odpowiedni plik w `03 Technologia/`
+- odpowiedni plik w `04 Plan/Updatey wdrożeniowe/`
 
 Jeżeli sesja dała nową decyzję architektoniczną albo produktową, zapisz ją od razu w odpowiednim pliku zamiast trzymać ją tylko w historii rozmowy.
+
+## Zasady Git przy pracy z Codexem
+
+Najważniejsza zasada:
+
+- nie rób commita po każdym pojedynczym promptcie
+- rób commit wtedy, gdy zamkniesz jeden logiczny kawałek pracy
+
+Dobra reguła:
+
+- `1 commit = 1 logiczna zmiana`
+- najpierw domknij logiczny update w kodzie albo wiki, potem commit
+- nie mieszaj w jednym commicie zmian wiki i zmian aplikacji, jeśli da się je rozdzielić
+
+Przykłady dobrych commitów:
+
+- uporządkowanie wiki i linków w dokumentacji
+- setup projektu i struktury aplikacji
+- wdrożenie lokalnej bazy danych
+- wdrożenie ręcznego dodawania wydatku
+
+Kiedy robić commit:
+
+- gdy zmiana jest spójna
+- gdy da się ją opisać jednym krótkim komunikatem
+- gdy pliki są w stanie, który warto zachować w historii
+
+Kiedy nie robić commitów jeszcze:
+
+- gdy jesteś w połowie zadania
+- gdy zmiany są robocze i niespójne
+- gdy kilka różnych tematów jest wymieszanych w jednym zestawie zmian
+
+## Prosty workflow Git
+
+1. Otwórz jedną sesję Codexa dla jednego głównego zadania.
+2. Pozwól mu doprowadzić zmianę do sensownego stanu.
+3. Sprawdź wynik.
+4. Jeżeli zadanie jest domknięte, zrób commit.
+5. Dopiero potem przejdź do kolejnego większego tematu.
+
+## Kiedy nowa sesja, kiedy ten sam czat
+
+Ten sam czat:
+
+- gdy doprecyzowujesz to samo zadanie
+- gdy kończysz ten sam obszar zmian
+
+Nowa sesja:
+
+- gdy zaczynasz inny temat
+- gdy przechodzisz z dokumentacji do implementacji
+- gdy zmienia się cel pracy i potrzebny jest inny kontekst startowy
+
+## Branching na start
+
+Na obecnym etapie możesz spokojnie pracować na `main`, jeśli:
+
+- pracujesz sam
+- zakres jest mały
+- zmiany są głównie koncepcyjne albo dokumentacyjne
+
+Dla repo aplikacji obecny stan jest przejściowy:
+
+- lokalne wdrożenia `00.1-00.3` są gotowe w workspace
+- ale historia Git aplikacji nie ma jeszcze commitów odpowiadających tym update'om
+- przed wejściem w `01.0` warto domknąć:
+  - jeden commit dla fundamentu `00.1`
+  - jeden commit dla danych `00.2`
+  - jeden commit dla kategorii i budżetów `00.3`
+
+Warto przejść na osobne branche, gdy:
+
+- zaczynasz większe wdrożenia techniczne
+- kilka tematów będzie rozwijanych równolegle
+- chcesz oddzielić eksperyment od stabilnej gałęzi głównej
 
 ## Ważna uwaga
 

@@ -42,6 +42,30 @@ Jeśli zaczynasz development teraz, zacznij od:
 3. [00.3 Kategorie i budżet startowy](./00.3 Kategorie i budżet startowy.md)
 4. [01.0 Ręczne dodawanie wydatku](./01.0 Ręczne dodawanie wydatku.md)
 
+## Stan realizacji
+
+- `00.1 Start projektu`:
+  - wykonane w workspace aplikacji
+  - obejmuje setup `Expo + React Native + TypeScript`, nawigację, wspólne UI i bazową konfigurację jakości
+- `00.2 Lokalna baza i modele`:
+  - wykonane w workspace aplikacji
+  - obejmuje warstwę danych `SQLite`, migracje, seed, repozytoria i fallback webowy
+- `00.3 Kategorie i budżet startowy`:
+  - wykonane w workspace aplikacji
+  - obejmuje konfigurację kategorii, budżetu miesiąca, budżetów kategorii i logikę przeliczania stanu budżetu
+- `01.0 Ręczne dodawanie wydatku`:
+  - wykonane w repo `finanse-app`
+  - razem z `01.1` domknięte commitem `49fac8f`
+- `01.1 Ręczne dodawanie przychodu`:
+  - wykonane w repo `finanse-app`
+  - obejmuje wspólny formularz transakcji, zapis przychodu i wspólne agregacje bilansu miesiąca
+
+## Stan Git a stan wdrożenia
+
+- stan wdrożenia `00.1-01.1` jest już zapisany w historii repo `finanse-app`
+- ostatni commit aplikacji: `49fac8f` `01.0-01.1 Add shared manual transaction entry flow`
+- kolejnym logicznym krokiem wdrożeniowym pozostaje `01.2 Dashboard MVP`
+
 ## Otwarte decyzje przed pierwszym commitem
 - wybór biblioteki lub podejścia do OCR on-device
 - decyzja, czy web rozwijasz równolegle od dnia 1, czy tylko utrzymujesz zgodność techniczną
