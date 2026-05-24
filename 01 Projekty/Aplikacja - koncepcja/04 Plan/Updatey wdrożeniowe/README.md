@@ -85,17 +85,22 @@ Jeśli zaczynasz development teraz, zacznij od:
   - obejmuje ekran analiz z przełącznikiem bieżącego i poprzedniego miesiąca
   - obejmuje wykres udziału kategorii, największe kategorie kosztów i trend dzienny wydatków
   - obejmuje lekką warstwę agregacji analitycznej poza komponentami UI
+- `03.2 Oszczędności`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje miesięczny, kwotowy cel oszczędności liczony jako `przychody - wydatki`
+  - obejmuje ustawianie celu w `Budżetach` i pokazywanie postępu celu na `Dashboardzie`
+  - obejmuje wspólną logikę postępu celu poza komponentami UI
 
 ## Stan Git a stan wdrożenia
 
 - stan wdrożenia `00.1-01.3` jest już zapisany w historii repo `finanse-app`
 - nowsze lokalne commity obejmują `01.3`, pierwszy commit `02.0-02.1` oraz późniejszą korektę budżetów
-- lokalny workspace ma już domknięte także poprawki OCR, `02.2`, `03.0`, `03.1` i ręcznie sprawdzony flow OCR na emulatorze
+- lokalny workspace ma już domknięte także poprawki OCR, `02.2`, `03.0`, `03.1`, `03.2` i ręcznie sprawdzony flow OCR na emulatorze
 
 ## Otwarte decyzje i ryzyka
 - decyzja, czy `Wybierz paragon z galerii` zostaje jako normalna ścieżka MVP, czy tylko wygodny fallback testowy
 - decyzja, czy web rozwijasz równolegle od dnia 1, czy tylko utrzymujesz zgodność techniczną
-- przed `03.2` warto zrobić krótki ręczny smoke test analiz na danych ręcznych i po OCR
+- przed `04.0` warto zrobić krótki ręczny smoke test celu oszczędności na danych z przychodami i wydatkami
 
 ## Dokument źródłowy
 Pełny plan zbiorczy pozostaje w [Plan updateów wdrożeniowych](../Plan updateów wdrożeniowych.md).

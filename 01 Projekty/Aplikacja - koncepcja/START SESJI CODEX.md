@@ -37,9 +37,11 @@
   - `02.2 Dashboard po OCR`
   - `03.0 Budżety`
   - `03.1 Analizy`
+  - `03.2 Oszczędności`
 - flow OCR jest już domknięte jako działający slice MVP
 - ekran budżetów jest już przebudowany do codziennej kontroli limitów i ryzyka
 - analizy mają już pierwszy poziom wykresów i agregacji dla bieżącego oraz poprzedniego miesiąca
+- dashboard pokazuje już także prosty postęp miesięcznego celu oszczędności
 - na emulatorze praktycznym fallbackiem testowym jest `Wybierz paragon z galerii`
 - `.obsidian/` i `99 Robocze/` są wykluczone z Git przez `.gitignore`
 

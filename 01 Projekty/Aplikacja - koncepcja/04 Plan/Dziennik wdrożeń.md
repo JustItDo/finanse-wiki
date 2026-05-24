@@ -161,6 +161,18 @@ Ma dawać szybki obraz:
 - następny krok:
   - `03.2 Oszczędności`
 
+### `03.2 Oszczędności`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - dodany został miesięczny, kwotowy cel oszczędności dla jednego aktywnego miesiąca
+  - oszczędności liczą się prosto jako `przychody - wydatki`
+  - cel ustawia się w zakładce `Budżety` razem z planem miesiąca
+  - dashboard pokazuje aktualny stan oszczędności, cel, brakującą kwotę albo nadwyżkę i prosty postęp celu
+  - logika celu korzysta ze wspólnych agregacji miesiąca zamiast dublować logikę budżetu
+- następny krok:
+  - `04.0 Bezpieczeństwo`
+
 ### `03.x Doprecyzowanie OCR po teście ręcznym`
 
 - status: `wykonane lokalnie w repo finanse-app`
@@ -170,7 +182,7 @@ Ma dawać szybki obraz:
   - parser screenów został doprecyzowany o anchory płatności, filtrowanie szumu bankowego i karanie małych opłat/prowizji
   - po tej poprawce ręcznie sprawdzone przykłady zaczęły znowu zwracać poprawne kwoty
 - następny krok:
-  - `03.2 Oszczędności`
+  - `04.0 Bezpieczeństwo`
 
 ### Budżety przychodów
 

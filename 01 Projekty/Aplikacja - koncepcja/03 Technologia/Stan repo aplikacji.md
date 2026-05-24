@@ -41,6 +41,7 @@ Na poziomie workspace aplikacji są już wykonane także:
 - `02.2 Dashboard po OCR`
 - `03.0 Budżety`
 - `03.1 Analizy`
+- `03.2 Oszczędności`
 
 ## Obecna struktura kodu
 
@@ -103,6 +104,14 @@ Najważniejsze katalogi:
   - sumy kategorii
   - sumy dzienne wydatków
 
+### Oszczędności
+
+- cel oszczędności kwotowy dla jednego miesiąca
+- jeden aktywny cel oszczędności na miesiąc
+- oszczędności liczone jako `przychody - wydatki`
+- postęp celu pokazany na `Dashboardzie`
+- logika celu korzysta ze wspólnych agregacji miesiąca zamiast równoległego modelu danych
+
 ### Historia i OCR
 
 - ekran historii transakcji z filtrowaniem, wyszukiwaniem, szczegółem, prostą edycją i usuwaniem
@@ -141,16 +150,16 @@ Najważniejsze katalogi:
   - `b4d31c4` `Fix income category budget entry`
 - `origin/master` jest obecnie zgodny z lokalnym `HEAD` do `02.2`
 
-To oznacza, że etapy `00.1-03.0` są już zapisane w historii repo, a `03.1 Analizy` jest obecnie domknięte lokalnie w workspace przed commitem tej sesji.
+To oznacza, że etapy `00.1-03.1` są już zapisane w historii repo, a `03.2 Oszczędności` jest obecnie domknięte lokalnie w workspace przed commitem tej sesji.
 
 ## Najbliższy krok Git
 
-- przygotować commit domykający `03.1 Analizy`
+- przygotować commit domykający `03.2 Oszczędności`
 
 ## Znaczenie dla kolejnych etapów
 
 Repo jest gotowe, żeby wejść w:
 
-- [[../04 Plan/Updatey wdrożeniowe/03.2 Oszczędności|03.2 Oszczędności]]
+- [[../04 Plan/Updatey wdrożeniowe/04.0 Bezpieczeństwo|04.0 Bezpieczeństwo]]
 
 Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji, gotowego flow OCR i wspólnej warstwy statusów budżetowych zamiast budować własną logikę danych od zera.
