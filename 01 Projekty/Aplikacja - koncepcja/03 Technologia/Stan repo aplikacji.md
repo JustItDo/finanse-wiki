@@ -38,6 +38,7 @@ Na poziomie workspace aplikacji są już wykonane także:
 
 - `02.0 OCR i dodawanie zdjęcia`
 - `02.1 Korekta OCR`
+- `02.2 Dashboard po OCR`
 
 ## Obecna struktura kodu
 
@@ -93,6 +94,9 @@ Najważniejsze katalogi:
   - poprawną normalizację `66.33` i podobnych formatów
 - ekran korekty OCR pokazuje pola do poprawy i zapisuje do tej samej warstwy danych co wpis ręczny
 - dla emulatora i testów dodany jest praktyczny fallback `Wybierz paragon z galerii`, który uruchamia parser paragonów bez użycia aparatu
+- zapis po OCR używa tej samej ścieżki danych co wpis ręczny, więc od razu aktualizuje budżety, dashboard i historię
+- historia i szczegół transakcji pokazują już spójne oznaczenie źródła wpisu `Ręcznie` lub `OCR`
+- ekran zapisu pokazuje wpływ transakcji na miesiąc także dla wpisów po OCR, bez osobnej ścieżki agregacji
 
 ### Ręczne transakcje
 
@@ -112,17 +116,16 @@ Najważniejsze katalogi:
   - `e7dd3a9` `01.2 Add MVP dashboard overview`
 - `origin/master` jest obecnie za lokalnym `HEAD`
 
-To oznacza, że etapy `00.1-02.1` są już wdrożone lokalnie, a historia repo zawiera domknięte commity do `01.3` oraz pierwszy commit OCR przed późniejszymi poprawkami i testami.
+To oznacza, że etapy `00.1-02.2` są już wdrożone lokalnie, a historia repo zawiera domknięte commity do `02.1` przed bieżącym domknięciem dashboardowego spięcia OCR.
 
 ## Najbliższy krok Git
 
-- przygotować commit domykający naprawy i weryfikację `02.0-02.1`
+- przygotować commit domykający `02.2 Dashboard po OCR`
 
 ## Znaczenie dla kolejnych etapów
 
 Repo jest gotowe, żeby wejść w:
 
-- [[../04 Plan/Updatey wdrożeniowe/02.2 Dashboard po OCR|02.2 Dashboard po OCR]]
 - [[../04 Plan/Updatey wdrożeniowe/03.0 Budżety|03.0 Budżety]]
 
 Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji i gotowego flow OCR zamiast budować własną logikę danych od zera.

@@ -126,6 +126,18 @@ Ma dawać szybki obraz:
 - następny krok:
   - `02.2 Dashboard po OCR`
 
+### `02.2 Dashboard po OCR`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - zapis po OCR używa tej samej ścieżki danych co wpis ręczny
+  - po zapisie OCR budżety, bilans miesiąca i dashboard aktualizują się bez osobnych wyjątków
+  - ekran zapisu pokazuje wpływ transakcji na miesiąc także dla wpisów z OCR
+  - historia i szczegół transakcji pokazują spójne źródło wpisu `Ręcznie`, `OCR paragonu` albo `OCR screena`
+  - oznaczenie źródła zostało wyniesione poza UI do wspólnej warstwy domenowej
+- następny krok:
+  - `03.0 Budżety`
+
 ### Budżety przychodów
 
 - status: `doprecyzowane lokalnie w repo finanse-app`

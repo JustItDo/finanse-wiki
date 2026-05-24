@@ -72,12 +72,16 @@ Jeśli zaczynasz development teraz, zacznij od:
 - `02.1 Korekta OCR`:
   - wykonane lokalnie w repo `finanse-app`
   - obejmuje ekran korekty OCR, oznaczanie pól niepewnych, poprawę kluczowych pól i zapis do tego samego flow co wpis ręczny
+- `02.2 Dashboard po OCR`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje pełne spięcie `OCR -> korekta -> zapis -> budżet -> dashboard -> historia`
+  - obejmuje spójne oznaczenie źródła wpisu i wspólną ścieżkę danych dla OCR i wpisu ręcznego
 
 ## Stan Git a stan wdrożenia
 
 - stan wdrożenia `00.1-01.3` jest już zapisany w historii repo `finanse-app`
 - nowsze lokalne commity obejmują `01.3`, pierwszy commit `02.0-02.1` oraz późniejszą korektę budżetów
-- lokalny workspace ma już domknięte także poprawki OCR i ręcznie sprawdzony flow na emulatorze
+- lokalny workspace ma już domknięte także poprawki OCR, `02.2` i ręcznie sprawdzony flow na emulatorze
 
 ## Otwarte decyzje i ryzyka
 - decyzja, czy `Wybierz paragon z galerii` zostaje jako normalna ścieżka MVP, czy tylko wygodny fallback testowy

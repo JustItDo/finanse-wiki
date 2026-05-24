@@ -34,6 +34,7 @@
 - lokalnie wykonane zostały też:
   - `02.0 OCR i dodawanie zdjęcia`
   - `02.1 Korekta OCR`
+  - `02.2 Dashboard po OCR`
 - flow OCR jest już domknięte jako działający slice MVP
 - na emulatorze praktycznym fallbackiem testowym jest `Wybierz paragon z galerii`
 - `.obsidian/` i `99 Robocze/` są wykluczone z Git przez `.gitignore`
@@ -303,7 +304,7 @@ Dla repo aplikacji obecny stan wygląda tak:
 
 - etapy `00.1-01.3` są już zapisane w historii repo `finanse-app`
 - lokalnie wykonane zostały też `02.0 OCR i dodawanie zdjęcia` oraz `02.1 Korekta OCR`
-- bieżący następny krok wdrożeniowy to `02.2 Dashboard po OCR`
+- bieżący następny krok wdrożeniowy to `03.0 Budżety`
 
 Warto przejść na osobne branche, gdy:
 
