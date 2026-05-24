@@ -65,13 +65,19 @@ Jeśli zaczynasz development teraz, zacznij od:
 - `01.3 Historia transakcji`:
   - wykonane lokalnie w repo `finanse-app`
   - obejmuje listę transakcji, filtrowanie, wyszukiwanie, szczegół oraz prostą edycję i usuwanie z zachowaniem spójnych agregacji
+- `02.0 OCR i dodawanie zdjęcia`:
+  - wykonane lokalnie jako minimalny pionowy slice w repo `finanse-app`
+  - obejmuje wybór obrazu, lokalny zapis załącznika, abstrakcję OCR, podstawowe mapowanie danych do formularza i fallback ręczny
+- `02.1 Korekta OCR`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje ekran korekty OCR, oznaczanie pól niepewnych, szybkie poprawki kluczowych pól i zapis do tego samego flow co wpis ręczny
 
 ## Stan Git a stan wdrożenia
 
 - stan wdrożenia `00.1-01.1` jest już zapisany w historii repo `finanse-app`
 - ostatni commit aplikacji: `49fac8f` `01.0-01.1 Add shared manual transaction entry flow`
 - lokalny workspace aplikacji ma też przygotowany update `01.2 Dashboard MVP`
-- kolejnym logicznym krokiem wdrożeniowym pozostaje `02.0 OCR i dodawanie zdjęcia`, chyba że wcześniej chcesz domknąć smoke test i commit dla `01.2-01.3`
+- kolejnym logicznym krokiem wdrożeniowym pozostaje `02.2 Dashboard po OCR`, po ręcznym sprawdzeniu OCR i korekty na development buildzie
 
 ## Otwarte decyzje przed pierwszym commitem
 - wybór biblioteki lub podejścia do OCR on-device

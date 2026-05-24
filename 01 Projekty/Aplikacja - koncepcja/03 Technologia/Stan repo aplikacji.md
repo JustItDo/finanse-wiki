@@ -33,6 +33,8 @@ Na poziomie workspace aplikacji są już wykonane:
 - `01.1 Ręczne dodawanie przychodu`
 - `01.2 Dashboard MVP`
 - `01.3 Historia transakcji`
+- `02.0 OCR i dodawanie zdjęcia` jako pierwszy pionowy slice
+- `02.1 Korekta OCR`
 
 ## Obecna struktura kodu
 
@@ -98,7 +100,7 @@ To oznacza, że etapy `00.1-01.1` są już zapisane w historii repo aplikacji i 
 
 Repo jest gotowe, żeby wejść w:
 
-- [[../04 Plan/Updatey wdrożeniowe/02.0 OCR i dodawanie zdjęcia|02.0 OCR i dodawanie zdjęcia]]
+- [[../04 Plan/Updatey wdrożeniowe/02.2 Dashboard po OCR|02.2 Dashboard po OCR]]
 - [[../04 Plan/Updatey wdrożeniowe/03.0 Budżety|03.0 Budżety]]
 
-Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji oraz nowej warstwy historii transakcji zamiast budować własną logikę danych od zera.
+Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji oraz logiki OCR i korekty poza UI zamiast budować własną logikę danych od zera.
