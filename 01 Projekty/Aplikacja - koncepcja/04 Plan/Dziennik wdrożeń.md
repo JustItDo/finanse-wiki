@@ -77,11 +77,22 @@ Ma dawać szybki obraz:
 - następny krok:
   - `01.2 Dashboard MVP`
 
+### `01.2 Dashboard MVP`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - wdrożony główny ekran szybkiego wglądu w miesiąc z przychodami, wydatkami i bilansem
+  - dodany stan „ile zostało z budżetu”, stany puste i komunikat o przekroczeniu planu
+  - dodane najważniejsze kategorie budżetowe oraz prosty przełącznik miesiąca
+  - logika agregacji dashboardu została wyniesiona poza komponent UI
+- następny krok:
+  - ręczny smoke test dashboardu na mobile i web, potem `01.3 Historia transakcji`
+
 ## Stan commitów
 
 Na moment tego wpisu:
 
 - `finanse-wiki` ma własną historię commitów dla dokumentacji i struktury vaultu
-- `finanse-app` ma domkniętą historię wdrożeń `00.1-01.1`
+- `finanse-app` ma domkniętą historię wdrożeń `00.1-01.1`, a `01.2` jest gotowe lokalnie do kolejnego logicznego commita
 
 Warto dalej dopisywać tu skrócone odniesienia do hashy po każdym kolejnym update.
