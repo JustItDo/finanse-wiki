@@ -76,16 +76,21 @@ Jeśli zaczynasz development teraz, zacznij od:
   - wykonane lokalnie w repo `finanse-app`
   - obejmuje pełne spięcie `OCR -> korekta -> zapis -> budżet -> dashboard -> historia`
   - obejmuje spójne oznaczenie źródła wpisu i wspólną ścieżkę danych dla OCR i wpisu ręcznego
+- `03.0 Budżety`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje pełny ekran budżetów z porządkiem sekcji, procentem wykorzystania, sygnałami ryzyka i wspólną logiką statusów poza UI
+  - obejmuje utrzymanie konfiguracji limitów i budżetu miesiąca bez rozdzielania osobnego flow danych
 
 ## Stan Git a stan wdrożenia
 
 - stan wdrożenia `00.1-01.3` jest już zapisany w historii repo `finanse-app`
 - nowsze lokalne commity obejmują `01.3`, pierwszy commit `02.0-02.1` oraz późniejszą korektę budżetów
-- lokalny workspace ma już domknięte także poprawki OCR, `02.2` i ręcznie sprawdzony flow na emulatorze
+- lokalny workspace ma już domknięte także poprawki OCR, `02.2`, `03.0` i ręcznie sprawdzony flow OCR na emulatorze
 
 ## Otwarte decyzje i ryzyka
 - decyzja, czy `Wybierz paragon z galerii` zostaje jako normalna ścieżka MVP, czy tylko wygodny fallback testowy
 - decyzja, czy web rozwijasz równolegle od dnia 1, czy tylko utrzymujesz zgodność techniczną
+- przed `03.1` warto zrobić krótki ręczny smoke test budżetów na większej liczbie kategorii i danych z OCR
 
 ## Dokument źródłowy
 Pełny plan zbiorczy pozostaje w [Plan updateów wdrożeniowych](../Plan updateów wdrożeniowych.md).

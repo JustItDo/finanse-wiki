@@ -22,7 +22,7 @@
   - `366be00` `Build finanse-wiki project structure and navigation`
   - `3b089ff` `Initialize project context, planning notes, and Codex skills`
 - ostatni commit w `finanse-app`:
-  - `b4d31c4` `Fix income category budget entry`
+  - `2dfc98c` `Complete 02.2 OCR dashboard integration`
 - w historii repo aplikacji są już zapisane:
   - `00.1 Start projektu`
   - `00.2 Lokalna baza i modele`
@@ -35,7 +35,9 @@
   - `02.0 OCR i dodawanie zdjęcia`
   - `02.1 Korekta OCR`
   - `02.2 Dashboard po OCR`
+  - `03.0 Budżety`
 - flow OCR jest już domknięte jako działający slice MVP
+- ekran budżetów jest już przebudowany do codziennej kontroli limitów i ryzyka
 - na emulatorze praktycznym fallbackiem testowym jest `Wybierz paragon z galerii`
 - `.obsidian/` i `99 Robocze/` są wykluczone z Git przez `.gitignore`
 

@@ -138,6 +138,29 @@ Ma dawać szybki obraz:
 - następny krok:
   - `03.0 Budżety`
 
+### `03.0 Budżety`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - ekran budżetów został przebudowany z etapu konfiguracji `00.3` do codziennego widoku kontroli budżetu
+  - kategorie wydatkowe są teraz porządkowane poza UI według ryzyka, wykorzystania i aktywności
+  - dodane zostały sekcje `Wymagają uwagi`, `Aktywne i pod kontrolą`, `Aktywne bez limitu` i `Nieaktywne kategorie`
+  - dla budżetu miesiąca i kategorii pokazywane są limit, wydane, pozostało i procent wykorzystania
+  - wspólne statusy `w normie`, `blisko limitu` i `przekroczony` korzystają z jednej warstwy danych współdzielonej z dashboardem
+- następny krok:
+  - `03.1 Analizy`
+
+### `03.x Doprecyzowanie OCR po teście ręcznym`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - po wdrożeniu `03.0` ręczny test wykazał regresję heurystyk OCR dla części screenów płatności i części paragonów
+  - parser paragonów dostał wyższy priorytet dla wyniku z układu OCR bloków nad surowym fallbackiem tekstowym
+  - parser screenów został doprecyzowany o anchory płatności, filtrowanie szumu bankowego i karanie małych opłat/prowizji
+  - po tej poprawce ręcznie sprawdzone przykłady zaczęły znowu zwracać poprawne kwoty
+- następny krok:
+  - `03.1 Analizy`
+
 ### Budżety przychodów
 
 - status: `doprecyzowane lokalnie w repo finanse-app`
@@ -153,6 +176,8 @@ Na moment tego wpisu:
 - `finanse-wiki` ma własną historię commitów dla dokumentacji i struktury vaultu
 - `finanse-app` ma w historii repo domknięte wdrożenia `00.1-01.3`
 - kolejne lokalne commity aplikacji obejmują:
+  - `2dfc98c` `Complete 02.2 OCR dashboard integration`
+  - `8f6f4f5` `Finalize 02.0-02.1 OCR receipt flow`
   - `83cd25e` `02.0-02.1 Add OCR import and correction flow`
   - `b4d31c4` `Fix income category budget entry`
 

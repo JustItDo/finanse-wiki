@@ -39,6 +39,7 @@ Na poziomie workspace aplikacji są już wykonane także:
 - `02.0 OCR i dodawanie zdjęcia`
 - `02.1 Korekta OCR`
 - `02.2 Dashboard po OCR`
+- `03.0 Budżety`
 
 ## Obecna struktura kodu
 
@@ -80,6 +81,14 @@ Najważniejsze katalogi:
 - budżety kategorii wydatkowych
 - uproszczone kategorie przychodów bez osobnych celów i limitów
 - logika liczenia pozostałego budżetu
+- pełny ekran budżetów dla MVP z sekcjami:
+  - kategorie problemowe
+  - aktywne kategorie pod kontrolą
+  - aktywne kategorie bez limitu
+  - nieaktywne kategorie
+- procent wykorzystania budżetu kategorii i budżetu miesiąca
+- wspólne statusy ryzyka i przekroczenia wyniesione do warstwy danych
+- spójne sortowanie kategorii według ryzyka, wykorzystania i aktywności
 
 ### Historia i OCR
 
@@ -92,6 +101,10 @@ Najważniejsze katalogi:
   - końcowy blok płatności `SUMA PLN`, `DO ZAPŁATY`, `ZAPŁACONO`
   - filtrowanie wartości podatkowych i datoczasów
   - poprawną normalizację `66.33` i podobnych formatów
+- heurystyka OCR dla screenów płatności została po ręcznym teście doprecyzowana o:
+  - anchory kontekstu płatności typu `zapłacono`, `transakcja`, `przelew`, `otrzymano`
+  - filtrowanie szumu bankowego typu saldo, referencje, identyfikatory i długie numery
+  - karanie małych opłat i prowizji, gdy obok jest właściwa większa kwota transakcji
 - ekran korekty OCR pokazuje pola do poprawy i zapisuje do tej samej warstwy danych co wpis ręczny
 - dla emulatora i testów dodany jest praktyczny fallback `Wybierz paragon z galerii`, który uruchamia parser paragonów bez użycia aparatu
 - zapis po OCR używa tej samej ścieżki danych co wpis ręczny, więc od razu aktualizuje budżety, dashboard i historię
@@ -110,22 +123,21 @@ Najważniejsze katalogi:
 
 - gałąź robocza: `master`
 - ostatnie commity:
+  - `2dfc98c` `Complete 02.2 OCR dashboard integration`
+  - `8f6f4f5` `Finalize 02.0-02.1 OCR receipt flow`
   - `b4d31c4` `Fix income category budget entry`
-  - `83cd25e` `02.0-02.1 Add OCR import and correction flow`
-  - `673b39b` `01.3 Add transaction history management flow`
-  - `e7dd3a9` `01.2 Add MVP dashboard overview`
-- `origin/master` jest obecnie za lokalnym `HEAD`
+- `origin/master` jest obecnie zgodny z lokalnym `HEAD` do `02.2`
 
-To oznacza, że etapy `00.1-02.2` są już wdrożone lokalnie, a historia repo zawiera domknięte commity do `02.1` przed bieżącym domknięciem dashboardowego spięcia OCR.
+To oznacza, że etapy `00.1-02.2` są już zapisane w historii repo, a `03.0 Budżety` wraz z późniejszym dopięciem heurystyk OCR jest obecnie domknięte lokalnie w workspace przed commitami tej sesji.
 
 ## Najbliższy krok Git
 
-- przygotować commit domykający `02.2 Dashboard po OCR`
+- przygotować commit domykający `03.0 Budżety`
 
 ## Znaczenie dla kolejnych etapów
 
 Repo jest gotowe, żeby wejść w:
 
-- [[../04 Plan/Updatey wdrożeniowe/03.0 Budżety|03.0 Budżety]]
+- [[../04 Plan/Updatey wdrożeniowe/03.1 Analizy|03.1 Analizy]]
 
-Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji i gotowego flow OCR zamiast budować własną logikę danych od zera.
+Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji, gotowego flow OCR i wspólnej warstwy statusów budżetowych zamiast budować własną logikę danych od zera.
