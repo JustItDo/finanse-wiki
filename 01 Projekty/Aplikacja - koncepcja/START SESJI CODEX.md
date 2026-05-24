@@ -8,6 +8,8 @@
 - [[01 Wizja/Start - brief projektu|Brief projektu]]
 - [[02 Produkt/MVP]]
 - [[03 Technologia/Decyzje techniczne]]
+- [[03 Technologia/Workflow developera|Workflow developera]]
+- [[03 Technologia/Workflow modeli AI|Workflow modeli AI]]
 - [[04 Plan/Roadmapa]]
 
 ## Co jest gotowe
@@ -16,14 +18,24 @@
 - repo `finanse-wiki` działa na gałęzi `main`
 - repo `finanse-app` działa na gałęzi `master`
 - ostatnie commity w `finanse-wiki`:
+  - `abc83c8` `Update implementation notes and Codex session workflow`
   - `366be00` `Build finanse-wiki project structure and navigation`
   - `3b089ff` `Initialize project context, planning notes, and Codex skills`
 - ostatni commit w `finanse-app`:
-  - `08c1374` `Initial commit`
-- w workspace aplikacji są już wdrożone, ale jeszcze nieudokumentowane w historii Git aplikacji:
+  - `b4d31c4` `Fix income category budget entry`
+- w historii repo aplikacji są już zapisane:
   - `00.1 Start projektu`
   - `00.2 Lokalna baza i modele`
   - `00.3 Kategorie i budżet startowy`
+  - `01.0 Ręczne dodawanie wydatku`
+  - `01.1 Ręczne dodawanie przychodu`
+  - `01.2 Dashboard MVP`
+  - `01.3 Historia transakcji`
+- lokalnie wykonane zostały też:
+  - `02.0 OCR i dodawanie zdjęcia`
+  - `02.1 Korekta OCR`
+- flow OCR jest już domknięte jako działający slice MVP
+- na emulatorze praktycznym fallbackiem testowym jest `Wybierz paragon z galerii`
 - `.obsidian/` i `99 Robocze/` są wykluczone z Git przez `.gitignore`
 
 ## Gdzie jest kontekst projektu
@@ -35,6 +47,8 @@ Najważniejsze pliki do czytania tylko wtedy, gdy są potrzebne do zadania:
 - `01 Wizja/Start - brief projektu.md`
 - `02 Produkt/MVP.md`
 - `03 Technologia/Decyzje techniczne.md`
+- `03 Technologia/Workflow developera.md`
+- `03 Technologia/Workflow modeli AI.md`
 - `03 Technologia/Stan repo aplikacji.md`
 - `04 Plan/Roadmapa.md`
 - `04 Plan/Updatey wdrożeniowe/README.md`
@@ -64,6 +78,10 @@ W projekcie i w aktywnym katalogu `~/.codex/skills` są dostępne:
 - `service-diagnosis`
 - `skill-router`
 
+Dodatkowe lokalne narzędzie workflow:
+
+- MCP tool `lmstudio_unit_tests` do szkicowania wąskich testów jednostkowych lokalnym modelem `LM Studio`
+
 ## Jak zaczynać nową sesję
 
 Domyślny prompt startowy projektu jest zapisany w:
@@ -75,6 +93,7 @@ Najwygodniejszy start w VS Code dla repo aplikacji:
 - uruchom task `Codex: Finanse`
 - task odpala lokalny skrypt `scripts/start-codex-finanse.sh`
 - ten skrypt uruchamia `codex` z gotowym promptem projektu
+- domyślny model dla tego startu to `gpt-5.4` z reasoning `medium`
 - skrypt dodaje też kontekst:
   - repo implementacyjne to bieżący workspace aplikacji
   - wiki projektu jest dostępne obok jako dodatkowy katalog
@@ -95,6 +114,11 @@ Read only what is necessary for the task. Then continue with: [tu wpisz zadanie]
 ```
 
 ## Workflow Obsidian <-> VS Code <-> Codex
+
+Szczegółowy dokument pracy developerskiej jest tutaj:
+
+- `03 Technologia/Workflow developera.md`
+- `03 Technologia/Workflow modeli AI.md`
 
 Podział ról:
 
@@ -275,14 +299,11 @@ Na obecnym etapie możesz spokojnie pracować na `main`, jeśli:
 - zakres jest mały
 - zmiany są głównie koncepcyjne albo dokumentacyjne
 
-Dla repo aplikacji obecny stan jest przejściowy:
+Dla repo aplikacji obecny stan wygląda tak:
 
-- lokalne wdrożenia `00.1-00.3` są gotowe w workspace
-- ale historia Git aplikacji nie ma jeszcze commitów odpowiadających tym update'om
-- przed wejściem w `01.0` warto domknąć:
-  - jeden commit dla fundamentu `00.1`
-  - jeden commit dla danych `00.2`
-  - jeden commit dla kategorii i budżetów `00.3`
+- etapy `00.1-01.3` są już zapisane w historii repo `finanse-app`
+- lokalnie wykonane zostały też `02.0 OCR i dodawanie zdjęcia` oraz `02.1 Korekta OCR`
+- bieżący następny krok wdrożeniowy to `02.2 Dashboard po OCR`
 
 Warto przejść na osobne branche, gdy:
 

@@ -66,25 +66,22 @@ Jeśli zaczynasz development teraz, zacznij od:
   - wykonane lokalnie w repo `finanse-app`
   - obejmuje listę transakcji, filtrowanie, wyszukiwanie, szczegół oraz prostą edycję i usuwanie z zachowaniem spójnych agregacji
 - `02.0 OCR i dodawanie zdjęcia`:
-  - wykonane lokalnie jako minimalny pionowy slice w repo `finanse-app`
-  - obejmuje wybór obrazu, lokalny zapis załącznika, abstrakcję OCR, podstawowe mapowanie danych do formularza i fallback ręczny
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje aparat dla paragonu, galerię dla screena płatności oraz fallback `paragon z galerii` do testów emulatora
+  - obejmuje lokalny zapis załącznika, OCR on-device, podstawowe mapowanie danych do formularza i fallback ręczny
 - `02.1 Korekta OCR`:
   - wykonane lokalnie w repo `finanse-app`
-  - obejmuje ekran korekty OCR, oznaczanie pól niepewnych, szybkie poprawki kluczowych pól i zapis do tego samego flow co wpis ręczny
+  - obejmuje ekran korekty OCR, oznaczanie pól niepewnych, poprawę kluczowych pól i zapis do tego samego flow co wpis ręczny
 
 ## Stan Git a stan wdrożenia
 
-- stan wdrożenia `00.1-01.1` jest już zapisany w historii repo `finanse-app`
-- ostatni commit aplikacji: `49fac8f` `01.0-01.1 Add shared manual transaction entry flow`
-- lokalny workspace aplikacji ma też przygotowany update `01.2 Dashboard MVP`
-- kolejnym logicznym krokiem wdrożeniowym pozostaje `02.2 Dashboard po OCR`, po ręcznym sprawdzeniu OCR i korekty na development buildzie
+- stan wdrożenia `00.1-01.3` jest już zapisany w historii repo `finanse-app`
+- nowsze lokalne commity obejmują `01.3`, pierwszy commit `02.0-02.1` oraz późniejszą korektę budżetów
+- lokalny workspace ma już domknięte także poprawki OCR i ręcznie sprawdzony flow na emulatorze
 
-## Otwarte decyzje przed pierwszym commitem
-- wybór biblioteki lub podejścia do OCR on-device
+## Otwarte decyzje i ryzyka
+- decyzja, czy `Wybierz paragon z galerii` zostaje jako normalna ścieżka MVP, czy tylko wygodny fallback testowy
 - decyzja, czy web rozwijasz równolegle od dnia 1, czy tylko utrzymujesz zgodność techniczną
-- minimalny zestaw kategorii startowych
-- decyzja, czy cel oszczędności wchodzi do modelu danych od razu, czy dopiero w `03.2`
-- decyzja, czy historia ma wspierać edycję i usuwanie już w pierwszej wersji
 
 ## Dokument źródłowy
 Pełny plan zbiorczy pozostaje w [Plan updateów wdrożeniowych](../Plan updateów wdrożeniowych.md).

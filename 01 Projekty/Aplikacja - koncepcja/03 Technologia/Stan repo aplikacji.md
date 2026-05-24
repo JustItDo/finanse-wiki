@@ -33,7 +33,10 @@ Na poziomie workspace aplikacji są już wykonane:
 - `01.1 Ręczne dodawanie przychodu`
 - `01.2 Dashboard MVP`
 - `01.3 Historia transakcji`
-- `02.0 OCR i dodawanie zdjęcia` jako pierwszy pionowy slice
+
+Na poziomie workspace aplikacji są już wykonane także:
+
+- `02.0 OCR i dodawanie zdjęcia`
 - `02.1 Korekta OCR`
 
 ## Obecna struktura kodu
@@ -73,8 +76,23 @@ Najważniejsze katalogi:
 - lista kategorii startowych
 - aktywacja i edycja kategorii
 - opcjonalny budżet miesiąca
-- budżety kategorii
+- budżety kategorii wydatkowych
+- uproszczone kategorie przychodów bez osobnych celów i limitów
 - logika liczenia pozostałego budżetu
+
+### Historia i OCR
+
+- ekran historii transakcji z filtrowaniem, wyszukiwaniem, szczegółem, prostą edycją i usuwaniem
+- działający flow wyboru obrazu, załączników, OCR i korekty
+- zapis załącznika został poprawiony pod `Expo 56` po usunięciu zależności od deprecated `FileSystem.copyAsync`
+- flow OCR waliduje teraz istnienie lokalnego pliku po kopiowaniu, zanim przekaże go do rozpoznawania tekstu
+- OCR dla paragonów i screenów działa on-device przez `@react-native-ml-kit/text-recognition`
+- heurystyka OCR dla kwot paragonów została rozszerzona o:
+  - końcowy blok płatności `SUMA PLN`, `DO ZAPŁATY`, `ZAPŁACONO`
+  - filtrowanie wartości podatkowych i datoczasów
+  - poprawną normalizację `66.33` i podobnych formatów
+- ekran korekty OCR pokazuje pola do poprawy i zapisuje do tej samej warstwy danych co wpis ręczny
+- dla emulatora i testów dodany jest praktyczny fallback `Wybierz paragon z galerii`, który uruchamia parser paragonów bez użycia aparatu
 
 ### Ręczne transakcje
 
@@ -87,14 +105,18 @@ Najważniejsze katalogi:
 ## Stan Git repo aplikacji
 
 - gałąź robocza: `master`
-- ostatni commit: `49fac8f` `01.0-01.1 Add shared manual transaction entry flow`
-- `origin/master` jest zsynchronizowany z lokalnym `HEAD`
+- ostatnie commity:
+  - `b4d31c4` `Fix income category budget entry`
+  - `83cd25e` `02.0-02.1 Add OCR import and correction flow`
+  - `673b39b` `01.3 Add transaction history management flow`
+  - `e7dd3a9` `01.2 Add MVP dashboard overview`
+- `origin/master` jest obecnie za lokalnym `HEAD`
 
-To oznacza, że etapy `00.1-01.1` są już zapisane w historii repo aplikacji i wypchnięte do `origin/master`.
+To oznacza, że etapy `00.1-02.1` są już wdrożone lokalnie, a historia repo zawiera domknięte commity do `01.3` oraz pierwszy commit OCR przed późniejszymi poprawkami i testami.
 
 ## Najbliższy krok Git
 
-- przygotować kolejny logiczny commit dla `01.2 Dashboard MVP`, gdy zmiana będzie domknięta
+- przygotować commit domykający naprawy i weryfikację `02.0-02.1`
 
 ## Znaczenie dla kolejnych etapów
 
@@ -103,4 +125,4 @@ Repo jest gotowe, żeby wejść w:
 - [[../04 Plan/Updatey wdrożeniowe/02.2 Dashboard po OCR|02.2 Dashboard po OCR]]
 - [[../04 Plan/Updatey wdrożeniowe/03.0 Budżety|03.0 Budżety]]
 
-Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji oraz logiki OCR i korekty poza UI zamiast budować własną logikę danych od zera.
+Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji i gotowego flow OCR zamiast budować własną logikę danych od zera.

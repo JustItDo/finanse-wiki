@@ -9,6 +9,8 @@ To jest główny obszar roboczy dla pomysłu na aplikację.
 - [[01 Wizja/Start - brief projektu|Brief projektu]]
 - [[02 Produkt/MVP]]
 - [[03 Technologia/Decyzje techniczne]]
+- [[03 Technologia/Workflow developera|Workflow developera]]
+- [[03 Technologia/Workflow modeli AI|Workflow modeli AI]]
 - [[03 Technologia/Stan repo aplikacji]]
 - [[04 Plan/Roadmapa]]
 - [[04 Plan/Dziennik wdrożeń]]
@@ -35,10 +37,16 @@ To jest główny obszar roboczy dla pomysłu na aplikację.
 - wiki projektu jest rozpisane na poziomie wizji, produktu, technologii i planu wdrożenia
 - implementacja aplikacji została rozpoczęta w osobnym repo `finanse-app`
 - wykonane w workspace aplikacji są update'y:
-  - `00.1 Start projektu`
-  - `00.2 Lokalna baza i modele`
-  - `00.3 Kategorie i budżet startowy`
-- kolejnym planowanym krokiem implementacyjnym jest `01.0 Ręczne dodawanie wydatku`
+- `00.1 Start projektu`
+- `00.2 Lokalna baza i modele`
+- `00.3 Kategorie i budżet startowy`
+- `01.0 Ręczne dodawanie wydatku`
+- `01.1 Ręczne dodawanie przychodu`
+- `01.2 Dashboard MVP`
+- `01.3 Historia transakcji`
+- `02.0 OCR i dodawanie zdjęcia`
+- `02.1 Korekta OCR`
+- najbliższym krokiem implementacyjnym jest `02.2 Dashboard po OCR`
 
 ## Repozytoria
 
@@ -46,13 +54,18 @@ To jest główny obszar roboczy dla pomysłu na aplikację.
   - przechowuje vault Obsidiana i trwałą dokumentację projektu
   - aktualna gałąź: `main`
   - ostatnie commity:
+    - `abc83c8` `Update implementation notes and Codex session workflow`
     - `366be00` `Build finanse-wiki project structure and navigation`
     - `3b089ff` `Initialize project context, planning notes, and Codex skills`
 - `finanse-app`:
   - przechowuje implementację aplikacji `Expo + React Native + TypeScript`
   - aktualna gałąź robocza: `master`
-  - ostatni commit: `08c1374` `Initial commit`
-  - bieżący stan wdrożenia `00.1-00.3` jest obecnie w worktree i nie został jeszcze domknięty commitem
+  - ostatnie lokalne commity:
+    - `b4d31c4` `Fix income category budget entry`
+    - `83cd25e` `02.0-02.1 Add OCR import and correction flow`
+    - `673b39b` `01.3 Add transaction history management flow`
+    - `e7dd3a9` `01.2 Add MVP dashboard overview`
+  - stan wdrożenia `00.1-01.3` jest zapisany w historii repo, a prace nad OCR są lokalnie rozpoczęte
 
 ## Najważniejsze notatki
 
@@ -61,5 +74,7 @@ To jest główny obszar roboczy dla pomysłu na aplikację.
 - [[02 Produkt/MVP]]
 - [[02 Produkt/Pomysły produktowe]]
 - [[03 Technologia/Decyzje techniczne]]
+- [[03 Technologia/Workflow developera|Workflow developera]]
+- [[03 Technologia/Workflow modeli AI|Workflow modeli AI]]
 - [[04 Plan/Roadmapa]]
 - [[04 Plan/Backlog]]
