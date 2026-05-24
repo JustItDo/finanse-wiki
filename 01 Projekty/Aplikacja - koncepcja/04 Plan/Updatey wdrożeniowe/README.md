@@ -62,13 +62,16 @@ Jeśli zaczynasz development teraz, zacznij od:
 - `01.2 Dashboard MVP`:
   - wykonane w repo `finanse-app`
   - obejmuje główny ekran miesiąca z przychodami, wydatkami, bilansem, stanem budżetu, kategoriami budżetowymi, pustymi stanami i prostym przełącznikiem miesiąca
+- `01.3 Historia transakcji`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje listę transakcji, filtrowanie, wyszukiwanie, szczegół oraz prostą edycję i usuwanie z zachowaniem spójnych agregacji
 
 ## Stan Git a stan wdrożenia
 
 - stan wdrożenia `00.1-01.1` jest już zapisany w historii repo `finanse-app`
 - ostatni commit aplikacji: `49fac8f` `01.0-01.1 Add shared manual transaction entry flow`
 - lokalny workspace aplikacji ma też przygotowany update `01.2 Dashboard MVP`
-- kolejnym logicznym krokiem wdrożeniowym pozostaje `01.3 Historia transakcji`
+- kolejnym logicznym krokiem wdrożeniowym pozostaje `02.0 OCR i dodawanie zdjęcia`, chyba że wcześniej chcesz domknąć smoke test i commit dla `01.2-01.3`
 
 ## Otwarte decyzje przed pierwszym commitem
 - wybór biblioteki lub podejścia do OCR on-device

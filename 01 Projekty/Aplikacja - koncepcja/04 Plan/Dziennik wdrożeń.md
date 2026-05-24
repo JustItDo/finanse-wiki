@@ -88,11 +88,23 @@ Ma dawać szybki obraz:
 - następny krok:
   - ręczny smoke test dashboardu na mobile i web, potem `01.3 Historia transakcji`
 
+### `01.3 Historia transakcji`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - wdrożona lista historii transakcji z filtrowaniem po typie, miesiącu i kategorii
+  - dodane wyszukiwanie, sensowne stany puste i komunikaty dla braku wyników
+  - dodany szczegół transakcji z prostą edycją inline i usuwaniem
+  - logika filtrowania, odczytu, edycji i usuwania została wydzielona poza komponenty UI
+  - edycja i usunięcie korzystają z istniejących agregacji, więc poprawnie odświeżają budżety, bilans miesiąca i dashboard
+- następny krok:
+  - `02.0 OCR i dodawanie zdjęcia` albo przed nim krótki ręczny smoke test historii na mobile i web
+
 ## Stan commitów
 
 Na moment tego wpisu:
 
 - `finanse-wiki` ma własną historię commitów dla dokumentacji i struktury vaultu
-- `finanse-app` ma domkniętą historię wdrożeń `00.1-01.1`, a `01.2` jest gotowe lokalnie do kolejnego logicznego commita
+- `finanse-app` ma domknięte wdrożenia `00.1-01.3` lokalnie i jest gotowe do kolejnego logicznego commita
 
 Warto dalej dopisywać tu skrócone odniesienia do hashy po każdym kolejnym update.

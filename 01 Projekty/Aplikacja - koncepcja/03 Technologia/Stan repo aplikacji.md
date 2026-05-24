@@ -5,6 +5,7 @@
 - [[../Mapa projektu|Mapa projektu]]
 - [[../README|README]]
 - [[Decyzje techniczne]]
+- [[Workflow developera]]
 - [[Model danych implementacyjny]]
 - [[../04 Plan/Updatey wdrożeniowe/README|Updatey wdrożeniowe]]
 - [[../04 Plan/Dziennik wdrożeń|Dziennik wdrożeń]]
@@ -30,6 +31,8 @@ Na poziomie workspace aplikacji są już wykonane:
 - `00.3 Kategorie i budżet startowy`
 - `01.0 Ręczne dodawanie wydatku`
 - `01.1 Ręczne dodawanie przychodu`
+- `01.2 Dashboard MVP`
+- `01.3 Historia transakcji`
 
 ## Obecna struktura kodu
 
@@ -83,19 +86,19 @@ Najważniejsze katalogi:
 
 - gałąź robocza: `master`
 - ostatni commit: `49fac8f` `01.0-01.1 Add shared manual transaction entry flow`
-- `origin/master` jest jeszcze o jeden commit za lokalnym `HEAD`
+- `origin/master` jest zsynchronizowany z lokalnym `HEAD`
 
-To oznacza, że etapy `00.1-01.1` są już zapisane w historii lokalnego repo aplikacji, ale ostatni commit nadal czeka na push.
+To oznacza, że etapy `00.1-01.1` są już zapisane w historii repo aplikacji i wypchnięte do `origin/master`.
 
 ## Najbliższy krok Git
 
-- wypchnąć commit `49fac8f` do `origin/master`
+- przygotować kolejny logiczny commit dla `01.2 Dashboard MVP`, gdy zmiana będzie domknięta
 
 ## Znaczenie dla kolejnych etapów
 
 Repo jest gotowe, żeby wejść w:
 
-- [[../04 Plan/Updatey wdrożeniowe/01.2 Dashboard MVP|01.2 Dashboard MVP]]
-- [[../04 Plan/Updatey wdrożeniowe/01.3 Historia transakcji|01.3 Historia transakcji]]
+- [[../04 Plan/Updatey wdrożeniowe/02.0 OCR i dodawanie zdjęcia|02.0 OCR i dodawanie zdjęcia]]
+- [[../04 Plan/Updatey wdrożeniowe/03.0 Budżety|03.0 Budżety]]
 
-Oba te update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji i wspólnych agregacji zamiast budować własną logikę danych od zera.
+Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji oraz nowej warstwy historii transakcji zamiast budować własną logikę danych od zera.
