@@ -350,3 +350,12 @@ Warto dalej dopisywać tu skrócone odniesienia do hashy po każdym kolejnym upd
   - sekcja dodawania z obrazu dostała prostszy, mniej techniczny język zamiast cięższego nazewnictwa `OCR`
 - następny krok:
   - dalsze poprawki już tylko po realnym użyciu i pojedynczych zgłoszeniach z telefonu
+
+### `Pierwszy artefakt APK`
+
+- status: `zapisane w repo finanse-app`
+- wynik:
+  - pierwszy build APK został dołączony do repo jako `Zenifi-v1.0.0.apk`
+  - artefakt można pobrać bezpośrednio z GitHuba do ręcznych testów instalacyjnych
+- następny krok:
+  - kolejne APK wrzucać już tylko dla istotnych milestone'ów albo przenieść dystrybucję na Releases
