@@ -355,7 +355,7 @@ Warto dalej dopisywać tu skrócone odniesienia do hashy po każdym kolejnym upd
 
 - status: `zapisane w repo finanse-app`
 - wynik:
-  - pierwszy build APK został dołączony do repo jako `Zenifi-v1.0.0.apk`
+  - pierwszy build APK został dołączony do repo jako `Zenifi-v1.0.0-debug.apk`
   - artefakt można pobrać bezpośrednio z GitHuba do ręcznych testów instalacyjnych
 - następny krok:
   - kolejne APK wrzucać już tylko dla istotnych milestone'ów albo przenieść dystrybucję na Releases
