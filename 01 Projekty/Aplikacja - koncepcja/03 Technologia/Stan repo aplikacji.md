@@ -66,6 +66,7 @@ Najważniejsze katalogi:
 - wspólne komponenty UI
 - bazowa konfiguracja `eslint`, `prettier`, aliasów i buildów web
 - osobny moduł `security` spięty providerem nad nawigacją
+- root `SafeAreaProvider` działa teraz z `initialWindowMetrics`, żeby bezpieczne insets były stabilniejsze od pierwszego renderu
 
 ### Warstwa danych
 
@@ -82,7 +83,8 @@ Najważniejsze katalogi:
 ### Budżety i kategorie
 
 - lista kategorii startowych
-- aktywacja i edycja kategorii
+- tworzenie własnych kategorii
+- aktywacja, edycja i usuwanie kategorii
 - opcjonalny budżet miesiąca
 - budżety kategorii wydatkowych
 - uproszczone kategorie przychodów bez osobnych celów i limitów
@@ -95,6 +97,10 @@ Najważniejsze katalogi:
 - procent wykorzystania budżetu kategorii i budżetu miesiąca
 - wspólne statusy ryzyka i przekroczenia wyniesione do warstwy danych
 - spójne sortowanie kategorii według ryzyka, wykorzystania i aktywności
+- zakładka `Budżety` pokazuje teraz listę kategorii z krótkim opisem, a edycja limitu dzieje się dopiero po wejściu w element
+- sekcja `Aktywne bez limitu` została uproszczona do `Kategorie bez limitu`, a główna sekcja limitów do `Kategorie z limitem`
+- usunięcie kategorii odłącza stare transakcje od tej kategorii i czyści jej limit miesięczny
+- użytkownik może też ustawić ikonę kategorii, która pojawia się potem na dashboardzie
 
 ### Analizy
 
@@ -119,6 +125,7 @@ Najważniejsze katalogi:
 ### Historia i OCR
 
 - ekran historii transakcji z filtrowaniem, wyszukiwaniem, szczegółem, prostą edycją i usuwaniem
+- historia pozwala teraz filtrować także przez `Wszystkie miesiące`
 - działający flow wyboru obrazu, załączników, OCR i korekty
 - zapis załącznika został poprawiony pod `Expo 56` po usunięciu zależności od deprecated `FileSystem.copyAsync`
 - flow OCR waliduje teraz istnienie lokalnego pliku po kopiowaniu, zanim przekaże go do rozpoznawania tekstu
@@ -167,6 +174,8 @@ Najważniejsze katalogi:
 - po pakiecie dopracowań przed testami telefonu ekran startuje bez agresywnego otwierania klawiatury
 - potwierdzenie zapisu ma teraz prostą formę `Dodano`, jest niżej na ekranie i nie zasłania dalszego dodawania
 - techniczne etykiety typu `update` zostały usunięte z głównych ekranów, żeby interfejs wyglądał bardziej produktowo
+- po paczce 3 formularze i listy z edycją korzystają z jednej lekkiej obsługi dolnego insetu ekranu i tabbara, żeby klawiatura nie zasłaniała tak łatwo pól na telefonie
+- dolne menu uwzględnia już bezpieczny dolny inset systemu i nie wpada pod pasek telefonu na urządzeniach z gestami
 
 ## Stan Git repo aplikacji
 
@@ -179,12 +188,25 @@ Najważniejsze katalogi:
 
 To oznacza, że etapy `00.1-04.2` oraz pakiet dopracowań przed testami telefonu są już zapisane w historii repo.
 
-Etap `04.2 Test MVP` i pakiet dopracowań UX oraz sesji bezpieczeństwa są już zapisane lokalnym commitem `c5faecc`.
+Etap `04.2 Test MVP` i pakiet dopracowań UX oraz sesji bezpieczeństwa są już zapisane commitem `c5faecc`.
+
+Bieżący workspace zawiera teraz jeszcze lokalną implementację `Paczki 3` i `Paczki 4` z feedbacku testerskiego:
+
+- poprawiony keyboard-aware scroll dla formularzy
+- poprawione bottom insets i wysokość tabbara
+- lepsze zachowanie na małych ekranach telefonu w `Dodaj transakcję`, `Budżety`, `Historia` i `Bezpieczeństwo`
+- przy pierwszym uruchomieniu pojawia się pytanie o ustawienie PIN-u z przejściem do zakładki `Bezpieczeństwo`
+- ekran odblokowania dostał 4 pola PIN-u z maskowaniem cyfr kropkami i prostsze copy
+- wyłączenie biometrii wymaga teraz potwierdzenia biometrią albo PIN-em
+- aktywna sesja nadal chroni zwykłe powroty z aparatu i galerii przed zbędnym ponownym PIN-em
+- obszar `Budżety` dostał też lokalną implementację `Paczki 2` z CRUD-em kategorii i lżejszym widokiem listy + szczegółu
+- `Historia` i `Dashboard` dostały też lokalną implementację `Paczki 1` z filtrem `Wszystkie miesiące` i lżejszym copy głównych sekcji
 
 ## Najbliższy krok Git
 
-- wypchnąć commit `c5faecc`
-- potem zrobić pełny ręczny test na urządzeniu i spisać tylko realne tarcia z używania
+- przygotować commit dla `Paczki 1`, `Paczki 2`, `Paczki 3` i `Paczki 4`
+- potem zrobić ręczny test telefonu pod historię, dashboard, kategorie, budżety, klawiaturę, scroll, onboarding PIN-u i blokadę biometryczną
+- następnym krokiem po tym pakiecie jest kolejna selekcja tylko tych poprawek, które wyjdą z realnego użycia
 
 ## Znaczenie dla kolejnych etapów
 

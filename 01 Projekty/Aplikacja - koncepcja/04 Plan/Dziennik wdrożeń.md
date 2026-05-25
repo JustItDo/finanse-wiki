@@ -234,6 +234,61 @@ Ma dawać szybki obraz:
   - wypchnąć commit `c5faecc`
   - zrobić pełny ręczny test na telefonie
 
+### `Paczka 3` - klawiatura, safe area i małe ekrany
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - root `SafeAreaProvider` został dopięty z `initialWindowMetrics`
+  - dolne menu zaczęło uwzględniać dolny inset systemu na telefonach z gestami i paskiem systemowym
+  - ekrany `Dodaj transakcję`, `Budżety`, `Bezpieczeństwo` i `Historia` dostały poprawione zachowanie scrolla oraz insetów przy aktywnej klawiaturze
+  - `Dashboard` i `Analizy` dostały dynamiczny dolny padding, żeby końcówka treści nie wpadała pod wyższy tabbar
+  - dodany został mały współdzielony helper do liczenia bezpiecznego dolnego paddingu zawartości ekranów
+- następny krok:
+  - ręczny test telefonu dla klawiatury, focusu pól, dolnego menu i małych ekranów
+  - potem `Paczka 4` - logowanie, PIN, biometria i sesja
+
+### `Paczka 4` - logowanie, PIN, biometria i sesja
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - przy pierwszym uruchomieniu bez aktywnego PIN-u pojawia się pytanie o włączenie blokady z przejściem do zakładki `Bezpieczeństwo`
+  - odrzucenie pytania jest zapamiętywane lokalnie i prompt nie wraca przy kolejnych uruchomieniach bez zmiany decyzji użytkownika
+  - ekran odblokowania dostał 4 pola PIN-u z maskowaniem cyfr kropkami i prostszym copy bez technicznych etykiet
+  - wyłączenie biometrii wymaga teraz potwierdzenia biometrią albo PIN-em zamiast prostego toggle
+  - logika aktywnej sesji została utrzymana: zwykłe przejście do aparatu lub galerii nie wymusza ponownego PIN-u
+- następny krok:
+  - pełny ręczny test telefonu dla onboardingu PIN-u, blokady, anulowanej biometrii i powrotu z aparatu lub galerii
+  - potem tylko selektywne poprawki z realnego użycia
+
+### `Paczka 2` - kategorie i budżety
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - kategorie dostały pełny podstawowy CRUD: tworzenie, edycję i usuwanie
+  - zakładka `Budżety` pokazuje teraz listę kategorii z krótkim opisem zamiast ciężkiej edycji inline każdej pozycji
+  - limit kategorii ustawia się dopiero po wejściu w konkretny element
+  - sekcje zostały uproszczone do bardziej produktowego nazewnictwa `Kategorie z limitem` i `Kategorie bez limitu`
+  - opisy najważniejszych sekcji budżetowych zostały skrócone
+  - usunięcie kategorii odłącza powiązane stare transakcje od kategorii i czyści jej limit dla bieżącego miesiąca
+  - do paczki dopięty został też wybór ikony kategorii, wykorzystywanej potem na dashboardzie
+- następny krok:
+  - ręczny test telefonu dla dodawania, edycji i usuwania kategorii oraz ustawiania limitu po wejściu w detal
+  - potem commit razem z pozostałymi paczkami feedbacku
+
+### `Paczka 1` - historia oraz dashboard copy i filtrowanie miesięcy
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - historia dostała filtr `Wszystkie miesiące`
+  - przełącznik miesięcy na dashboardzie został utrzymany jako otwarty także dla pustych miesięcy, co pozostaje najprostszym zachowaniem zgodnym z produktem
+  - z dashboardu usunięty został tekst o `guardrailach budżetowych`
+  - `Cel oszczędności` został zmieniony na `Cel oszczędnościowy`
+  - `Sytuacja miesiąca` została zmieniona na `Ten miesiąc`
+  - skrócone zostały puste stany i pomocnicze teksty na dashboardzie
+- następny krok:
+  - ręczny test telefonu dla historii z filtrem wszystkich miesięcy i dla pustych / przyszłych miesięcy na dashboardzie
+  - potem commit razem z pozostałymi paczkami feedbacku
+
 ### `03.x Doprecyzowanie OCR po teście ręcznym`
 
 - status: `wykonane lokalnie w repo finanse-app`
