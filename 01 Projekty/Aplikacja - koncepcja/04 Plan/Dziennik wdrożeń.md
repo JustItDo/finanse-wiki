@@ -258,6 +258,25 @@ Ma dawać szybki obraz:
   - logika aktywnej sesji została utrzymana: zwykłe przejście do aparatu lub galerii nie wymusza ponownego PIN-u
 - następny krok:
   - pełny ręczny test telefonu dla onboardingu PIN-u, blokady, anulowanej biometrii i powrotu z aparatu lub galerii
+
+### `Podstawowy rebranding Zenifi`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - nazwa aplikacji w konfiguracji Expo została ustawiona na `Zenifi`
+  - slug, scheme oraz identyfikatory buildów zostały uporządkowane pod kolejne buildy jako `zenifi`
+  - przygotowane zostały nowe assety marki na bazie `zenifi-logo-v3-balance.svg`
+  - podmienione zostały:
+    - app icon
+    - Android adaptive icon
+    - monochrome icon
+    - splash asset
+    - favicon web
+  - bazowa paleta aplikacji została zbliżona do kierunku marki `Zenifi`
+  - najbardziej oczywiste miejsca widocznej starej marki w UI zostały usunięte lub podmienione
+- następny krok:
+  - uruchomić kolejny build / preview już pod marką `Zenifi`
+  - ocenić, czy potrzebny jest drugi etap rebrandingu UI bez mieszania go z bieżącym utrzymaniem produktu
   - potem tylko selektywne poprawki z realnego użycia
 
 ### `Paczka 2` - kategorie i budżety

@@ -15,6 +15,8 @@
 
 Repo `finanse-app` przechowuje implementację aplikacji `Finansowy Copilot`.
 
+Aktualny kierunek marki dla produktu to `Zenifi`, a podstawowy rebranding aplikacji został już wdrożony w konfiguracji Expo, assetach i najprostszych miejscach UI.
+
 To repo jest osobne od `finanse-wiki`, ale od początku działa z założeniem, że wiki projektu znajduje się obok jako vault Obsidiana.
 
 Najważniejsza relacja katalogów:
@@ -65,6 +67,11 @@ Najważniejsze katalogi:
 - nawigacja tabowa
 - wspólne komponenty UI
 - bazowa konfiguracja `eslint`, `prettier`, aliasów i buildów web
+- podstawowy rebranding do marki `Zenifi`:
+  - nazwa aplikacji i slug Expo
+  - bundle identifier / package pod kolejne buildy
+  - ikona aplikacji, adaptive icon, splash i favicon
+  - bazowy kierunek kolorystyczny zgodny z notatką marki
 - osobny moduł `security` spięty providerem nad nawigacją
 - root `SafeAreaProvider` działa teraz z `initialWindowMetrics`, żeby bezpieczne insets były stabilniejsze od pierwszego renderu
 
@@ -207,6 +214,12 @@ Bieżący workspace zawiera teraz jeszcze lokalną implementację `Paczki 3` i `
 - przygotować commit dla `Paczki 1`, `Paczki 2`, `Paczki 3` i `Paczki 4`
 - potem zrobić ręczny test telefonu pod historię, dashboard, kategorie, budżety, klawiaturę, scroll, onboarding PIN-u i blokadę biometryczną
 - następnym krokiem po tym pakiecie jest kolejna selekcja tylko tych poprawek, które wyjdą z realnego użycia
+
+Po wdrożeniu podstawowego rebrandingu `Zenifi` następnym osobnym krokiem może być już tylko drugi etap marki:
+
+- pełniejsze dopasowanie UI do nowej marki
+- druga iteracja splasha i ewentualnie sklepowej nazwy listingowej
+- sprawdzenie buildów urządzeniowych już pod nową nazwą i ikonami
 
 ## Znaczenie dla kolejnych etapów
 
