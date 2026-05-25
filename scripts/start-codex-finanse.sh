@@ -28,4 +28,8 @@ Additional app context:
 - When implementation affects workflow, status, roadmap, decisions, or working rules, update the wiki too."
 
 cd "${APP_ROOT}"
-exec codex --add-dir "${WIKI_ROOT}" "${PROMPT}"
+exec codex \
+  --model gpt-5.4 \
+  -c model_reasoning_effort="medium" \
+  --add-dir "${WIKI_ROOT}" \
+  "${PROMPT}"
