@@ -173,6 +173,37 @@ Ma dawać szybki obraz:
 - następny krok:
   - `04.0 Bezpieczeństwo`
 
+## 2026-05-25
+
+### `04.0 Bezpieczeństwo`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - dodany został centralny moduł bezpieczeństwa z własnym providerem i stanem blokady
+  - wejście do aplikacji można zabezpieczyć `PIN-em 4-cyfrowym`
+  - biometria działa jako opcjonalne, szybsze odblokowanie nad tym samym PIN-em
+  - sekret blokady i ustawienia bezpieczeństwa są trzymane poza `SQLite` w `expo-secure-store`
+  - po wznowieniu aplikacji z tła dostęp zostaje ponownie zablokowany pełnoekranowym overlayem
+  - dodana została zakładka `Bezpieczeństwo` do konfiguracji PIN-u, biometrii, zmiany PIN-u i wyłączenia blokady
+  - pełne szyfrowanie lokalnej bazy i załączników zostało świadomie odłożone poza ten etap MVP
+- następny krok:
+  - ręczny test na urządzeniu lub emulatorze dla PIN-u, wznowienia i biometrii
+  - potem `04.1 Poprawki UX i wydajności`
+
+### `04.1 Poprawki UX i wydajności`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - ekran dodawania został rozdzielony na czytelny tryb ręczny i tryb OCR
+  - dodane zostały `Szybkie powtórki` do podstawiania ostatnich podobnych wpisów
+  - manualny flow został uproszczony do domyślnej ścieżki `kwota -> kategoria -> zapis`, a szczegóły pozostały rozwijane
+  - korekta OCR pokazuje teraz, ile pól wymaga uwagi, i nie pokazuje surowego tekstu, dopóki użytkownik go nie rozwinie
+  - historia przestała wykonywać zbędne pełne pobranie danych przy filtrach tylko po to, by rozpoznać pusty stan
+  - dodane zostały dodatkowe indeksy pod miesięczne zapytania transakcyjne dla dashboardu, historii, budżetów i analiz
+- następny krok:
+  - ręczny test codziennego flow po etapach `04.0-04.1`
+  - potem `04.2 Test MVP`
+
 ### `03.x Doprecyzowanie OCR po teście ręcznym`
 
 - status: `wykonane lokalnie w repo finanse-app`

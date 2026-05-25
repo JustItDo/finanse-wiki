@@ -42,6 +42,8 @@ Na poziomie workspace aplikacji są już wykonane także:
 - `03.0 Budżety`
 - `03.1 Analizy`
 - `03.2 Oszczędności`
+- `04.0 Bezpieczeństwo`
+- `04.1 Poprawki UX i wydajności`
 
 ## Obecna struktura kodu
 
@@ -62,6 +64,7 @@ Najważniejsze katalogi:
 - nawigacja tabowa
 - wspólne komponenty UI
 - bazowa konfiguracja `eslint`, `prettier`, aliasów i buildów web
+- osobny moduł `security` spięty providerem nad nawigacją
 
 ### Warstwa danych
 
@@ -132,6 +135,23 @@ Najważniejsze katalogi:
 - zapis po OCR używa tej samej ścieżki danych co wpis ręczny, więc od razu aktualizuje budżety, dashboard i historię
 - historia i szczegół transakcji pokazują już spójne oznaczenie źródła wpisu `Ręcznie` lub `OCR`
 - ekran zapisu pokazuje wpływ transakcji na miesiąc także dla wpisów po OCR, bez osobnej ścieżki agregacji
+- ekran dodawania rozdziela teraz wyraźnie szybki wpis ręczny od trybu OCR
+- ręczne dodawanie ma sekcję `Szybkie powtórki` opartą o ostatnie podobne transakcje
+- korekta OCR pokazuje teraz wyraźniej liczbę pól wymagających uwagi, a surowy tekst OCR jest domyślnie schowany
+- historia przy filtrach nie robi już zbędnego pełnego pobrania danych tylko do rozpoznania pustego stanu
+
+### Bezpieczeństwo
+
+- osobny provider bezpieczeństwa pilnuje stanu blokady, wznowienia aplikacji i odblokowania
+- wejście do aplikacji można zabezpieczyć `PIN-em 4-cyfrowym`
+- dostępna jest opcjonalna biometria jako szybsza ścieżka odblokowania nad tym samym PIN-em
+- sekret blokady jest przechowywany poza `SQLite`:
+  - natywnie przez `expo-secure-store`
+  - na webie przez fallback przeglądarkowy
+- po starcie aplikacji z aktywną blokadą użytkownik musi ponownie odblokować dostęp
+- po przejściu aplikacji do tła i wznowieniu dane nie zostają widoczne bez ponownego odblokowania
+- dodana została zakładka `Bezpieczeństwo` z konfiguracją PIN-u, biometrii i wyłączenia blokady
+- pełne szyfrowanie lokalnej bazy i załączników nie weszło do `04.0`; obecny etap daje sensowną ochronę MVP, ale nie pełne szyfrowanie danych spoczynkowych
 
 ### Ręczne transakcje
 
@@ -140,6 +160,7 @@ Najważniejsze katalogi:
 - ręczne dodawanie przychodu
 - wspólny model `transaction` dla `income` i `expense`
 - wspólne agregacje miesiąca dla salda, przychodów i wydatków
+- tryb ręczny został uproszczony do szybkiej ścieżki `kwota -> kategoria -> zapis`, a szczegóły są rozwijane tylko gdy są potrzebne
 
 ## Stan Git repo aplikacji
 
@@ -152,14 +173,17 @@ Najważniejsze katalogi:
 
 To oznacza, że etapy `00.1-03.1` są już zapisane w historii repo, a `03.2 Oszczędności` jest obecnie domknięte lokalnie w workspace przed commitem tej sesji.
 
+Etapy `04.0 Bezpieczeństwo` i `04.1 Poprawki UX i wydajności` są obecnie domknięte lokalnie w workspace przed commitem tej sesji.
+
 ## Najbliższy krok Git
 
-- przygotować commit domykający `03.2 Oszczędności`
+- przygotować commit domykający `03.2 Oszczędności`, `04.0 Bezpieczeństwo` i `04.1 Poprawki UX i wydajności`
 
 ## Znaczenie dla kolejnych etapów
 
 Repo jest gotowe, żeby wejść w:
 
-- [[../04 Plan/Updatey wdrożeniowe/04.0 Bezpieczeństwo|04.0 Bezpieczeństwo]]
+- ręczny test pełnego codziennego flow po poprawkach `04.0-04.1`
+- [[../04 Plan/Updatey wdrożeniowe/04.2 Test MVP|04.2 Test MVP]]
 
 Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji, gotowego flow OCR i wspólnej warstwy statusów budżetowych zamiast budować własną logikę danych od zera.
