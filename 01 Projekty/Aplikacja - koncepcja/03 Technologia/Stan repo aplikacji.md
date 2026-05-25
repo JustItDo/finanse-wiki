@@ -230,3 +230,9 @@ Repo jest gotowe, żeby wejść w:
 - krótkie poprawki tylko tam, gdzie wyjdą z prawdziwego użycia
 
 Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji, gotowego flow OCR i wspólnej warstwy statusów budżetowych zamiast budować własną logikę danych od zera.
+
+Dodatkowe lokalne dopracowania po testach telefonu obejmują też:
+
+- wspólny górny inset safe area po ukryciu headerów tabów
+- automatyczne odświeżanie kategorii na ekranie `Dodaj transakcję` po powrocie z `Budżetów`
+- prostsze, mniej techniczne nazewnictwo trybu dodawania z obrazu zamiast eksponowania słowa `OCR`

@@ -340,3 +340,13 @@ Na moment tego wpisu:
   - `b4d31c4` `Fix income category budget entry`
 
 Warto dalej dopisywać tu skrócone odniesienia do hashy po każdym kolejnym update.
+
+### `Drobne dopracowania po testach telefonu`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - po wyłączeniu nagłówków tabów ekrany dostały wspólny górny inset oparty o safe area, żeby treść nie wpadała pod status bar
+  - `Dodaj transakcję` odświeża teraz kontekst po powrocie na ekran, więc nowo dodane kategorie z `Budżetów` są od razu widoczne
+  - sekcja dodawania z obrazu dostała prostszy, mniej techniczny język zamiast cięższego nazewnictwa `OCR`
+- następny krok:
+  - dalsze poprawki już tylko po realnym użyciu i pojedynczych zgłoszeniach z telefonu
