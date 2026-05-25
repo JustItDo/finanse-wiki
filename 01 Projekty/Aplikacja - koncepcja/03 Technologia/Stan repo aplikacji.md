@@ -44,6 +44,7 @@ Na poziomie workspace aplikacji są już wykonane także:
 - `03.2 Oszczędności`
 - `04.0 Bezpieczeństwo`
 - `04.1 Poprawki UX i wydajności`
+- `04.2 Test MVP`
 
 ## Obecna struktura kodu
 
@@ -149,9 +150,11 @@ Najważniejsze katalogi:
   - natywnie przez `expo-secure-store`
   - na webie przez fallback przeglądarkowy
 - po starcie aplikacji z aktywną blokadą użytkownik musi ponownie odblokować dostęp
-- po przejściu aplikacji do tła i wznowieniu dane nie zostają widoczne bez ponownego odblokowania
+- po dłuższym przejściu aplikacji do tła i wznowieniu dane nie zostają widoczne bez ponownego odblokowania
 - dodana została zakładka `Bezpieczeństwo` z konfiguracją PIN-u, biometrii i wyłączenia blokady
 - pełne szyfrowanie lokalnej bazy i załączników nie weszło do `04.0`; obecny etap daje sensowną ochronę MVP, ale nie pełne szyfrowanie danych spoczynkowych
+- w `04.2` poprawiono sesję bezpieczeństwa tak, żeby krótkie wejście do aparatu lub galerii nie zrywało OCR i aktywnego flow użytkownika
+- po pakiecie dopracowań auto-biometria próbuje odblokowania tylko raz po blokadzie, a po anulowaniu nadal można normalnie wejść PIN-em
 
 ### Ręczne transakcje
 
@@ -161,29 +164,34 @@ Najważniejsze katalogi:
 - wspólny model `transaction` dla `income` i `expense`
 - wspólne agregacje miesiąca dla salda, przychodów i wydatków
 - tryb ręczny został uproszczony do szybkiej ścieżki `kwota -> kategoria -> zapis`, a szczegóły są rozwijane tylko gdy są potrzebne
+- po pakiecie dopracowań przed testami telefonu ekran startuje bez agresywnego otwierania klawiatury
+- potwierdzenie zapisu ma teraz prostą formę `Dodano`, jest niżej na ekranie i nie zasłania dalszego dodawania
+- techniczne etykiety typu `update` zostały usunięte z głównych ekranów, żeby interfejs wyglądał bardziej produktowo
 
 ## Stan Git repo aplikacji
 
 - gałąź robocza: `master`
 - ostatnie commity:
-  - `2dfc98c` `Complete 02.2 OCR dashboard integration`
-  - `8f6f4f5` `Finalize 02.0-02.1 OCR receipt flow`
-  - `b4d31c4` `Fix income category budget entry`
-- `origin/master` jest obecnie zgodny z lokalnym `HEAD` do `02.2`
+  - `c5faecc` `Polish pre-phone-test UX and lock session flow`
+  - `ebaf687` `Implement 04.0 security and 04.1 UX polish`
+  - `f5a6df7` `Implement 03.2 monthly savings goal`
+- `origin/master` jest obecnie o `1` commit za lokalnym `HEAD`
 
-To oznacza, że etapy `00.1-03.1` są już zapisane w historii repo, a `03.2 Oszczędności` jest obecnie domknięte lokalnie w workspace przed commitem tej sesji.
+To oznacza, że etapy `00.1-04.2` oraz pakiet dopracowań przed testami telefonu są już zapisane w historii repo.
 
-Etapy `04.0 Bezpieczeństwo` i `04.1 Poprawki UX i wydajności` są obecnie domknięte lokalnie w workspace przed commitem tej sesji.
+Etap `04.2 Test MVP` i pakiet dopracowań UX oraz sesji bezpieczeństwa są już zapisane lokalnym commitem `c5faecc`.
 
 ## Najbliższy krok Git
 
-- przygotować commit domykający `03.2 Oszczędności`, `04.0 Bezpieczeństwo` i `04.1 Poprawki UX i wydajności`
+- wypchnąć commit `c5faecc`
+- potem zrobić pełny ręczny test na urządzeniu i spisać tylko realne tarcia z używania
 
 ## Znaczenie dla kolejnych etapów
 
 Repo jest gotowe, żeby wejść w:
 
-- ręczny test pełnego codziennego flow po poprawkach `04.0-04.1`
-- [[../04 Plan/Updatey wdrożeniowe/04.2 Test MVP|04.2 Test MVP]]
+- test telefonu na codziennych scenariuszach
+- kilka dni realnego używania jako głównego rejestru finansów
+- krótkie poprawki tylko tam, gdzie wyjdą z prawdziwego użycia
 
 Kolejne update'y powinny korzystać bezpośrednio z istniejących repozytoriów, wspólnego modelu transakcji, dashboardowych agregacji, warstwy historii transakcji, gotowego flow OCR i wspólnej warstwy statusów budżetowych zamiast budować własną logikę danych od zera.

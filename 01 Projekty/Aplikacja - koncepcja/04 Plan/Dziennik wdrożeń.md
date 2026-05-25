@@ -204,6 +204,36 @@ Ma dawać szybki obraz:
   - ręczny test codziennego flow po etapach `04.0-04.1`
   - potem `04.2 Test MVP`
 
+### `04.2 Test MVP`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - sprawdzone zostały najważniejsze flow MVP dla dashboardu, wpisu ręcznego, OCR, historii, budżetów, analiz, oszczędności i bezpieczeństwa
+  - `typecheck`, `lint` i eksport web przechodzą poprawnie
+  - potwierdzono spójność głównych przeliczeń i wspólnej warstwy danych między modułami
+  - wykryto blocker UX w bezpieczeństwie: krótkie przejście do aparatu lub galerii zrywało sesję
+  - blocker został poprawiony przez timeout sesji przy wznowieniu zamiast natychmiastowej blokady
+  - na tej podstawie MVP zostało ocenione jako gotowe do codziennego użycia
+- następny krok:
+  - zrobić pakiet dopracowań UX i jakości przed testami telefonu
+  - potem wejść w kilka dni realnego używania jako głównego rejestru
+
+### Dopracowanie przed testami telefonu
+
+- status: `wykonane w repo finanse-app`
+- commit:
+  - `c5faecc` `Polish pre-phone-test UX and lock session flow`
+- wynik:
+  - skrócone zostały zbyt długie opisy na głównych ekranach
+  - usunięte zostały techniczne napisy typu `update`
+  - ekran dodawania transakcji nie otwiera już od razu klawiatury i lepiej znosi pracę na małym ekranie
+  - komunikat po zapisie transakcji został uproszczony do krótkiego `Dodano` i nie zasłania dalszego flow
+  - sesja po PIN-ie albo biometrii została wydłużona tak, żeby dodanie paragonu nie wymuszało ponownego odblokowania
+  - po anulowaniu albo błędzie biometrii ekran blokady nie zapętla już auto-logowania i pozwala normalnie wejść PIN-em
+- następny krok:
+  - wypchnąć commit `c5faecc`
+  - zrobić pełny ręczny test na telefonie
+
 ### `03.x Doprecyzowanie OCR po teście ręcznym`
 
 - status: `wykonane lokalnie w repo finanse-app`
