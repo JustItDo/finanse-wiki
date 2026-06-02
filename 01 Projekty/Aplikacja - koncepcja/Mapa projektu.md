@@ -32,6 +32,8 @@ To jest główny punkt nawigacyjny dla projektu `Finansowy Copilot`.
 
 - [[03 Technologia/Decyzje techniczne]]
 - [[03 Technologia/Stack technologiczny]]
+- [[03 Technologia/Workflow developera]]
+- [[03 Technologia/Workflow modeli AI]]
 - [[03 Technologia/Model danych implementacyjny]]
 - [[03 Technologia/Stan repo aplikacji]]
 - [[03 Technologia/Offline i chmura]]
@@ -43,6 +45,8 @@ To jest główny punkt nawigacyjny dla projektu `Finansowy Copilot`.
 - [[04 Plan/Roadmapa]]
 - [[04 Plan/Backlog]]
 - [[04 Plan/Dziennik wdrożeń]]
+- [[04 Plan/Inbox zmian]]
+- [[04 Plan/Inbox - rozpisane updatey/README|Inbox - rozpisane updatey]]
 - [[04 Plan/Plan updateów wdrożeniowych]]
 - [[04 Plan/Updatey wdrożeniowe/README|Updatey wdrożeniowe]]
 
@@ -51,6 +55,8 @@ To jest główny punkt nawigacyjny dla projektu `Finansowy Copilot`.
 - [[04 Plan/Updatey wdrożeniowe/00.1 Start projektu|00.1 Start projektu]]
 - [[04 Plan/Updatey wdrożeniowe/00.2 Lokalna baza i modele|00.2 Lokalna baza i modele]]
 - [[04 Plan/Updatey wdrożeniowe/00.3 Kategorie i budżet startowy|00.3 Kategorie i budżet startowy]]
+- [[04 Plan/Updatey wdrożeniowe/01.0 Ręczne dodawanie wydatku|01.0 Ręczne dodawanie wydatku]]
+- [[04 Plan/Updatey wdrożeniowe/01.1 Ręczne dodawanie przychodu|01.1 Ręczne dodawanie przychodu]]
 
 ## Najważniejsze relacje
 
