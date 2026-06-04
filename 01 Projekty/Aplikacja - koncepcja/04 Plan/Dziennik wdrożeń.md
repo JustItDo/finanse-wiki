@@ -350,3 +350,373 @@ Warto dalej dopisywać tu skrócone odniesienia do hashy po każdym kolejnym upd
   - sekcja dodawania z obrazu dostała prostszy, mniej techniczny język zamiast cięższego nazewnictwa `OCR`
 - następny krok:
   - dalsze poprawki już tylko po realnym użyciu i pojedynczych zgłoszeniach z telefonu
+
+### `Domknięcie dnia`
+
+- status: `zapisane w wiki`
+- wynik:
+  - podstawowy rebranding do `Zenifi` jest opisany i zapisany
+  - poprawki UX po testach telefonu są już ujęte w dokumentacji
+  - lokalne APK nie pozostaje w repo jako docelowy artefakt dystrybucyjny, bo ta droga ma iść przez GitHub Releases
+- następny krok:
+  - przygotować pierwszy release poza repo zamiast trzymać duże binaria w Git
+  - kolejne drobne poprawki robić tylko po realnym użyciu
+
+## 2026-06-02
+
+### `04.3 Backup ZIP`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - dodany został ręczny eksport danych do pliku `zenifi-backup-YYYY-MM-DD-HH-mm.zip`
+  - dodany został ręczny import backupu ZIP przez picker dokumentów
+  - format backupu zawiera `manifest.json`, `data.json` i realne pliki załączników pod `attachments/<attachmentId>/<filename>`
+  - `data.json` nie przenosi lokalnych `fileUri`, tylko stabilne metadane załączników i ścieżkę `backupPath`
+  - import scala dane po stabilnych `id`, aktualizuje tylko nowsze rekordy i nie kasuje lokalnych danych
+  - konflikty kategorii po nazwie są obsługiwane przez mapowanie na lokalną kategorię albo sufiks ` (import)`
+  - backup nie przenosi PIN-u, biometrii ani sekretów z `SecureStore`
+  - pierwsza wersja ZIP-a nie jest szyfrowana, ale manifest ma pola przygotowane pod przyszłe szyfrowanie i chmurę
+  - dodane zależności: `expo-document-picker`, `expo-sharing`, `fflate`
+  - `typecheck` i `lint` przechodzą
+- ograniczenia:
+  - ręczny smoke test na urządzeniu pozostaje do wykonania, bo Expo dev server nie wystartował w środowisku Codexa przez zajęte porty `8081` i `8082`
+  - web ma w tej wersji tylko jawny komunikat, że ZIP backup jest funkcją mobilną
+- następny krok:
+  - ręczny test Androida: eksport, import na czystej instalacji, ponowny import bez duplikatów, import na istniejących danych i sprawdzenie załączników
+
+### `Zmiana zakładki zabezpieczeń na Ustawienia`
+
+- status: `wykonane lokalnie w repo finanse-app`
+- wynik:
+  - dolna zakładka konfiguracji aplikacji ma teraz etykietę `Ustawienia` zamiast `Bezpieczeństwo`
+  - ikona zakładki została zmieniona z tarczy na koło zębate
+  - ekran konfiguracji ma nagłówek `Ustawienia`, a sekcje PIN-u, biometrii i kopii danych pozostają częścią tego ekranu
+  - prompt pierwszego PIN-u kieruje użytkownika do `Ustawień`
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+
+## 2026-06-03
+
+### `01 Historia - filtry i domyślny zakres`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/01 Historia - filtry i domyślny zakres]]
+- wynik:
+  - historia domyślnie otwiera zakres `Wszystkie miesiące`
+  - lista historii pozostaje sortowana od najnowszych transakcji do najstarszych
+  - na górze filtrów stale widoczne są `Szukaj` i segment `Typ`
+  - filtry `Miesiąc` i `Kategoria` są ukryte pod przyciskiem `Filtry aktywne: X`
+  - licznik aktywnych filtrów dotyczy ukrytych filtrów miesiąca i kategorii
+  - po edycji transakcji historia nie przełącza się automatycznie z `Wszystkie miesiące` na konkretny miesiąc
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - test telefonu opisany w notatce update'u: historia z transakcjami z różnych miesięcy, wyszukiwanie, segment typu, rozwinięcie filtrów, filtr miesiąca/kategorii i czyszczenie filtrów
+
+### `02 Zwijane sekcje UI`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/02 Zwijane sekcje UI]]
+- wynik:
+  - dodany został wspólny komponent `CollapsibleSection`
+  - stan rozwinięcia jest zapamiętywany per `screenId` i `sectionId`
+  - web zapisuje stan w `localStorage`, a aplikacja natywna przez istniejące `expo-secure-store`
+  - pilotaż wdrożono na ekranie `Historia` dla sekcji dodatkowych filtrów
+  - stale widoczne pozostają krytyczne kontrolki historii: `Szukaj` i segment `Typ`
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - otworzyć historię, zwinąć i rozwinąć `Filtry aktywne: X`, przejść na inny ekran, wrócić i sprawdzić zapamiętany stan sekcji
+
+### `03 Budżety - limit 0 jako bez limitu`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/03 Budżety - limit 0 jako bez limitu]]
+- wynik:
+  - wariant `3B` został wdrożony bez migracji modelu danych
+  - wpisanie `0 zł` w limicie kategorii jest poprawne i zapisuje się jako limit `0`
+  - w agregacji budżetów limit kategorii `0` jest interpretowany jak `Bez limitu`
+  - kategoria z limitem `0` nie trafia do przekroczeń, ryzyk ani kategorii z limitem
+  - szczegół kategorii ma jedno pole limitu bez osobnego przełącznika limitu; puste pole albo `0` oznacza `Bez limitu`
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - wejść w kategorię wydatkową, ustawić limit `0 zł`, wrócić do listy budżetów i potwierdzić stan `Bez limitu`
+  - dodać wydatek w tej kategorii i sprawdzić, że nie pojawia się przekroczenie
+  - zmienić limit na kwotę większą od zera i ponownie na `0 zł`
+
+### `04 Ustawienia jako centrum aplikacji`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/04 Ustawienia jako centrum aplikacji]]
+- wynik:
+  - wariant `4B` został wdrożony jako lokalne centrum ustawień bez osobnego stacka nawigacji
+  - pierwszy widok `Ustawień` pokazuje kafle `Bezpieczeństwo`, `Backup i dane`, `Synchronizacja` i `Aplikacja`
+  - kafel `Bezpieczeństwo` prowadzi do istniejącej konfiguracji PIN-u, biometrii, zmiany PIN-u i wyłączenia blokady
+  - kafel `Backup i dane` prowadzi do istniejącego eksportu i importu backupu ZIP oraz informacji o danych lokalnych
+  - kafel `Synchronizacja` jasno pokazuje, że sync nie jest dostępny w MVP
+  - kafel `Aplikacja` pokazuje podstawowe informacje o aplikacji i trybie offline-first
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - otworzyć `Ustawienia`, wejść w każdy kafel i wrócić do centrum ustawień
+  - w `Bezpieczeństwie` sprawdzić dostęp do PIN-u oraz biometrii
+  - w `Backup i dane` sprawdzić dostęp do eksportu i importu
+  - potwierdzić, że `Synchronizacja` nie sugeruje gotowej funkcji
+
+### `05 Backup do plików telefonu`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/05 Backup do plików telefonu]]
+- wynik:
+  - wariant `5B` został wdrożony bez zmiany formatu backupu ZIP
+  - w `Ustawienia -> Backup i dane` jest jeden przycisk startowy `Utwórz backup`
+  - po przygotowaniu ZIP-a w cache pojawiają się akcje `Zapisz do plików` i `Udostępnij`
+  - zapis do plików używa systemowego wyboru katalogu Expo FileSystem SDK 56
+  - udostępnianie używa dotychczasowego systemowego share sheet
+  - import backupu ZIP pozostał bez zmiany
+  - nie wdrażano szyfrowania ani synchronizacji
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - na telefonie wejść w `Ustawienia -> Backup i dane`, nacisnąć `Utwórz backup`, potem `Zapisz do plików` i wybrać katalog w systemowym pickerze
+  - ponownie utworzyć backup i sprawdzić `Udostępnij`
+  - po zapisaniu pliku sprawdzić, że import nadal przyjmuje zapisany ZIP
+- poprawka po teście telefonu:
+  - zapis do katalogu wybranego przez Android SAF używa teraz `Directory.createFile(...)`, bo `File.create(...)` jest odrzucane dla URI `content://`
+  - po poprawce `npm run typecheck` i `npm run lint` przechodzą
+
+### `06 Analiza - wybór okresu`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/06 Analiza - wybór okresu]]
+- wynik:
+  - wariant `6C` został wdrożony bez zmian w dashboardzie
+  - ekran `Analizy` ma kompaktowy przycisk aktualnego okresu
+  - po kliknięciu przycisku otwiera się wysuwany selektor zakresu
+  - obsługiwane zakresy to `Ten miesiąc`, `Poprzedni miesiąc`, `3 miesiące`, `6 miesięcy`, `Rok` i `Cały okres`
+  - agregacje analizy składają dane z wielu miesięcy przez istniejące repozytoria transakcji
+  - trend pozostaje dzienny dla pojedynczego miesiąca, a dla zakresów wielomiesięcznych pokazuje słupki miesięczne
+  - puste stany i metryka aktywności są dopasowane do wybranego zakresu
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - na telefonie otworzyć `Analizy`, kliknąć kompaktowy przycisk okresu i zamknąć selektor bez wyboru
+  - wybrać kolejno każdy zakres i sprawdzić, czy podsumowanie, kategorie i trend się odświeżają
+  - porównać wartości dla `Ten miesiąc`, `6 miesięcy` i `Cały okres`
+  - sprawdzić pusty stan na zakresie bez wydatków
+
+### `07 Analiza - bilans okresu`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/07 Analiza - bilans okresu]]
+  - [[Inbox - rozpisane updatey/06 Analiza - wybór okresu]]
+- wynik:
+  - wariant `7B` został wdrożony na ekranie `Analizy`
+  - karta `Bilans okresu` pokazuje mocny wynik liczony jako `przychody - wydatki`
+  - breakdown karty pokazuje `Przychody`, `Wydatki` i `Wynik`
+  - wynik reaguje na aktualny zakres z selektora analizy
+  - copy karty mówi, że wynik dotyczy transakcji zapisanych w aplikacji i nie jest saldem konta bankowego
+  - karta pokazuje też zrozumiały stan zerowy dla zakresu bez danych
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - na telefonie dodać przychód i wydatek w tym samym okresie, wejść w `Analizy` i sprawdzić wynik bilansu
+  - sprawdzić wariant dodatni, ujemny i zerowy
+  - zmienić zakres analizy i potwierdzić, że karta przelicza `Przychody`, `Wydatki` i `Wynik`
+  - sprawdzić copy karty, czy nie sugeruje salda bankowego
+
+### `08 Ustawienia - reset stanu i komunikatów`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/08 Ustawienia - reset stanu i komunikatów]]
+  - [[Inbox - rozpisane updatey/04 Ustawienia jako centrum aplikacji]]
+  - [[Inbox - rozpisane updatey/05 Backup do plików telefonu]]
+- wynik:
+  - po opuszczeniu taba `Ustawienia` lokalny widok wraca do `home`, czyli głównego menu kafli
+  - po kliknięciu `Wróć do ustawień` z podwidoku lokalny widok także wraca do `home` i czyści stare komunikaty
+  - wejście w inny kafel ustawień czyści stare komunikaty z poprzedniej sekcji
+  - czyszczone są `feedback`, `errorMessage` i `backupSummary`
+  - czyszczone są też tymczasowe potwierdzenie wyłączenia biometrii i jego pole PIN-u
+  - asynchroniczne akcje backupu nie ustawiają nowych komunikatów, jeśli użytkownik opuścił już tab `Ustawienia`
+  - logika PIN-u, biometrii i repozytorium backupu nie została przebudowana
+- celowo zostawione:
+  - wartości pól formularzy PIN-u i zmiany PIN-u nie są twardo resetowane przy opuszczeniu taba
+  - stan trwały ustawień bezpieczeństwa oraz ustawienia backupu nie są zmieniane
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - wejść w `Ustawienia -> Backup i dane`, utworzyć backup, przełączyć tab i wrócić do `Ustawień`
+  - potwierdzić, że widoczne jest główne menu ustawień, bez starego komunikatu i bez podsumowania backupu
+  - wejść ponownie w `Backup i dane` i sprawdzić, że stare akcje backupu nie są widoczne bez ponownego utworzenia backupu
+  - utworzyć backup, kliknąć `Wróć do ustawień` i potwierdzić, że centrum ustawień nie pokazuje już komunikatu ani podsumowania backupu
+
+### `09 Historia - inline szczegóły i edycja transakcji`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/09 Historia - inline szczegóły i edycja transakcji]]
+  - [[Inbox - rozpisane updatey/01 Historia - filtry i domyślny zakres]]
+- wynik:
+  - kliknięcie transakcji rozwija jej szczegóły bezpośrednio pod rekordem historii
+  - edycja, zapis, anulowanie edycji, usuwanie i podgląd załącznika pozostają w tym samym rozwiniętym elemencie
+  - jednocześnie może być rozwinięta tylko jedna transakcja
+  - ponowne kliknięcie aktywnej transakcji albo przycisk `Zwiń` zamyka szczegóły
+  - kliknięcie innej transakcji zamyka poprzedni detal i otwiera nowy
+  - walidacja edycji i zapis korzystają z dotychczasowej logiki historii
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+- do sprawdzenia ręcznie:
+  - na telefonie wejść w `Historia`, kliknąć transakcję z góry listy i sprawdzić rozwinięcie inline
+  - kliknąć inną transakcję i potwierdzić, że poprzednia się zamyka
+  - wejść w `Edytuj`, zmienić pole, zapisać i sprawdzić odświeżenie listy
+  - wejść ponownie w edycję, nacisnąć `Anuluj` i potwierdzić powrót do podglądu bez zapisu
+  - przewinąć dłuższą listę i sprawdzić, czy rozwinięty element nie rozjeżdża layoutu
+
+### `10B Rebranding v2 - wdrożenie w kodzie`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/10A Rebranding v2 - kolory i logo]]
+  - [[Inbox - rozpisane updatey/10B Rebranding v2 - wdrożenie w kodzie]]
+  - [[Inbox - rozpisane updatey/10 Rebranding v2 - nowe logo i żywszy UI]]
+- decyzja wejściowa:
+  - paleta: `Neon Mint`
+  - kierunek logo: `Logo B - Z + wykres`
+- wynik:
+  - assety app icon, adaptive icon, monochrome icon, splash i favicon zostały wygenerowane z nowego źródła SVG
+  - konfiguracja Expo dostała tło `#F6FFF9` i bazę `#102A2A`
+  - `src/shared/theme` ma teraz `lightTheme`, `lightColors` i semantyczne tokeny pod późniejsze `darkTheme`
+  - wspólne CTA używa tokenów `cta` i `ctaText`
+  - stany ostrzeżeń, danger, sukcesu i miękkich akcentów w głównych ekranach korzystają z tokenów zamiast lokalnych HEX-ów
+  - nie wdrażano dark mode, zmian nawigacji ani zmian logiki danych
+- świadomie pozostawione hardcody kolorów:
+  - `app.json` i SVG assetów jako źródła brandingu Expo
+  - `src/shared/theme/index.ts` jako centralne źródło tokenów
+  - `src/storage/seedData.ts` jako kolory danych startowych kategorii
+  - `src/features/analysis/data/analysis.ts` jako fallback koloru kategorii do osobnej decyzji, jeśli kolory kategorii mają też przejść na tokeny
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+  - asset `assets/icon.png` został obejrzany lokalnie po wygenerowaniu
+- do sprawdzenia ręcznie:
+  - ikona aplikacji i adaptive icon na Androidzie
+  - splash / start aplikacji
+  - dashboard, główne CTA i karty metryk
+  - dodawanie transakcji z akcentem pól wymagających uwagi
+  - historia, budżety i ustawienia pod kątem kontrastu tekstów i stanów
+
+### `11 Tryb ciemny i system motywów`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/11 Tryb ciemny i system motywów]]
+  - [[Inbox - rozpisane updatey/10 Rebranding v2 - nowe logo i żywszy UI]]
+- wynik:
+  - dodano system motywów z preferencjami `Systemowy`, `Jasny` i `Ciemny`
+  - preferencja zapisuje się lokalnie przez `expo-secure-store`, a na webie przez `localStorage`
+  - tryb `Systemowy` rozwiązuje się przez ustawienie telefonu z `useColorScheme`
+  - `StatusBar` przełącza styl ikon zgodnie z aktywnym motywem
+  - `NavigationContainer`, tabbar, overlay blokady, prompt PIN-u i wspólne komponenty UI korzystają z bieżących tokenów theme
+  - kluczowe ekrany `Dashboard`, `Dodaj`, `Historia`, `Budżety`, `Analizy`, `Ustawienia` i ekran blokady zostały przepięte z jasnych statycznych kolorów na dynamiczne style motywu
+  - po update `12` przełącznik motywu jest dostępny w `Ustawienia -> Motywy`
+  - nie wdrażano pełnej personalizacji palety ani rozbudowanego edytora motywów
+- świadomie pozostawione hardcody kolorów:
+  - `src/shared/theme/index.ts` jako centralne źródło tokenów light/dark
+  - `src/storage/seedData.ts` jako kolory danych startowych kategorii
+  - `src/features/analysis/data/analysis.ts` jako fallback koloru kategorii
+  - assety Expo i SVG jako źródła brandingu aplikacji
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+  - `git diff --check` nie zgłasza problemów
+- do sprawdzenia ręcznie:
+  - na telefonie wejść w `Ustawienia -> Motywy` i przełączyć kolejno `Ciemny`, `Jasny`, `Systemowy`
+  - zamknąć i ponownie uruchomić aplikację, sprawdzając, czy wybrany motyw został zapamiętany
+  - przejść przez `Dashboard`, `Dodaj`, `Historia`, `Budżety`, `Analizy`, `Ustawienia` i ekran blokady, sprawdzając kontrast tekstów, kart, tabbara, CTA oraz status baru
+  - w trybie `Systemowy` zmienić motyw telefonu i sprawdzić, czy aplikacja reaguje po powrocie na ekran
+
+### `12 Motywy kolorystyczne - wybór palety`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/12 Motywy kolorystyczne - wybór palety]]
+  - [[Inbox - rozpisane updatey/11 Tryb ciemny i system motywów]]
+  - [[Inbox - rozpisane updatey/10B Rebranding v2 - wdrożenie w kodzie]]
+  - [[../02 Produkt/Zenifi - Palety rebrandingu v2]]
+- wynik:
+  - system theme działa teraz jako `themeMode + paletteId -> theme`
+  - dostępne są trzy palety: `Neon Mint`, `Electric Pine` i `Signal Finance`
+  - domyślną paletą pozostaje `Neon Mint`
+  - `themeMode` i `paletteId` zapisują się niezależnie poza SQLite, natywnie w `expo-secure-store`, a na webie w `localStorage`
+  - dotychczasowy klucz trybu `zenifi_theme_preference` jest czytany jako fallback dla istniejących instalacji
+  - `Ustawienia -> Motywy` zawiera wybór trybu `Systemowy / Jasny / Ciemny` oraz kafelki palet z próbkami kolorów
+  - `Ustawienia -> Aplikacja` pozostaje informacyjne i nie zawiera konfiguracji motywu ani palety
+  - progresy, trend analizy i pozytywne stany finansowe korzystają z tokenów palety przez `success` i `chartPrimary`
+  - nie dodano edytora kolorów, własnych HEX-ów ani personalizacji poszczególnych tokenów przez użytkownika
+- świadomie pozostawione hardcody kolorów:
+  - `src/shared/theme/index.ts` jako centralne źródło palet i tokenów
+  - `src/storage/seedData.ts` jako kolory danych startowych kategorii
+  - `src/features/analysis/data/analysis.ts` jako fallback koloru kategorii
+  - assety Expo i SVG jako źródła brandingu aplikacji
+- weryfikacja:
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+  - `git diff --check` nie zgłasza problemów
+- do sprawdzenia ręcznie:
+  - na telefonie wejść w `Ustawienia -> Motywy`
+  - przełączyć paletę na `Electric Pine`, sprawdzić `Dashboard`, `Historia`, `Budżety`, `Analizy` i `Ustawienia`
+  - przełączyć paletę na `Signal Finance` i sprawdzić te same ekrany
+  - przełączyć tryb `Jasny`, `Ciemny` i `Systemowy`, potwierdzając niezależność trybu od palety
+  - wejść w `Ustawienia -> Aplikacja` i potwierdzić, że nie ma tam konfiguracji motywu ani palety
+  - zamknąć i uruchomić aplikację ponownie, sprawdzając zapamiętanie `themeMode` i `paletteId`
+
+### `13 Start aplikacji - nazwa i splash`
+
+- status: `wdrożone lokalnie w repo finanse-app`
+- źródło:
+  - [[Inbox - rozpisane updatey/13 Start aplikacji - nazwa i splash]]
+  - [[Inbox - rozpisane updatey/10B Rebranding v2 - wdrożenie w kodzie]]
+- wynik:
+  - `app.json` był już ustawiony na `Zenifi`, `zenifi` i `com.justitdo.zenifi`
+  - `package.json` ma techniczną nazwę `zenifi-app`
+  - aktywne assety `assets/icon.png`, `assets/splash-icon.png`, `assets/android-icon-foreground.png`, `assets/android-icon-background.png`, `assets/android-icon-monochrome.png` i `assets/favicon.png` są spójne z tymczasowym brandem Zenifi
+  - lokalnie wygenerowany folder `android/` miał stare wartości `finanse-app`, `com.anonymous.finanseapp` oraz domyślny splash/launcher Expo
+  - lokalny `android/` został wyrównany do `Zenifi`, `com.justitdo.zenifi`, tła `#F6FFF9` i koloru bazowego `#102A2A`
+  - natywne zasoby `splashscreen_logo.png` i `ic_launcher*.webp` zostały odświeżone z aktualnych assetów w `assets/`
+  - po błędzie `package com.anonymous.finanseapp does not exist` pliki `MainActivity.kt` i `MainApplication.kt` zostały przeniesione do ścieżki `android/app/src/main/java/com/justitdo/zenifi/`
+  - usunięto lokalny wygenerowany cache autolinkingu Androida, który nadal zawierał stary `project.android.packageName`
+  - finalnego logo nadal nie projektowano; używany jest obecny tymczasowy brand
+- uwaga:
+  - katalog `android/` jest ignorowany przez Git jako wygenerowany folder natywny, ale lokalnie wpływa na APK budowane przez `expo run:android`
+  - jeśli po zmianach telefon nadal pokazuje starą nazwę albo ikonę, przyczyną jest najpewniej stara instalacja APK/dev build/cache, a nie `app.json`
+- weryfikacja:
+  - `npx expo config --json` zwraca `name: Zenifi` i `android.package: com.justitdo.zenifi`
+  - `rg` nie znajduje aktywnych tekstowych referencji do `finanse-app`, `finanseapp` ani `com.anonymous.finanseapp` w sprawdzanych plikach aplikacji i Androida
+  - `./gradlew app:assembleDebug -x lint -x test --configure-on-demand --build-cache -PreactNativeDevServerPort=8081 -PreactNativeArchitectures=x86_64 --stacktrace` przechodzi po odświeżeniu cache autolinkingu
+  - `npm run typecheck` przechodzi
+  - `npm run lint` przechodzi
+  - natywne assety Androida zostały sprawdzone rozmiarami i podglądem lokalnym
+- do sprawdzenia ręcznie:
+  - odinstalować z telefonu stare instalacje `com.anonymous.finanseapp` i `com.justitdo.zenifi`, jeśli są widoczne
+  - wykonać czysty rebuild/dev install i sprawdzić, że launcher pokazuje nazwę `Zenifi`
+  - uruchomić aplikację na telefonie i sprawdzić splash z tymczasowym znakiem Zenifi na jasnym tle
+  - sprawdzić ikonę launchera i ekran ostatnich aplikacji po czystej instalacji

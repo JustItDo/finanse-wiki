@@ -1,0 +1,24 @@
+You are writing unit tests only.
+
+Project:
+- Expo + React Native + TypeScript
+- Write tests only for the provided file
+- Do not redesign production code
+- Do not explain the solution
+
+Target:
+- file under test: [wklej sciezke]
+- test runner: [Jest / Vitest / not configured yet]
+
+Task:
+- generate unit tests for the provided function or module
+- cover normal cases, edge cases, and invalid input where relevant
+- keep mocks minimal
+
+Output rules:
+- return only the test file content
+- do not add commentary
+- do not modify unrelated files
+
+Context:
+[wklej tylko potrzebny kod]

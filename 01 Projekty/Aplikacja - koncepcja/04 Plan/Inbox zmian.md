@@ -27,6 +27,14 @@ Wybrane pomysły z tego inboxu zostały rozpisane na osobne briefy wykonawcze:
 - [[Inbox - rozpisane updatey/05 Backup do plików telefonu|05 Backup do plików telefonu]]
 - [[Inbox - rozpisane updatey/06 Analiza - wybór okresu|06 Analiza - wybór okresu]]
 - [[Inbox - rozpisane updatey/07 Analiza - bilans okresu|07 Analiza - bilans okresu]]
+- [[Inbox - rozpisane updatey/08 Ustawienia - reset stanu i komunikatów|08 Ustawienia - reset stanu i komunikatów]]
+- [[Inbox - rozpisane updatey/09 Historia - inline szczegóły i edycja transakcji|09 Historia - inline szczegóły i edycja transakcji]]
+- [[Inbox - rozpisane updatey/10 Rebranding v2 - nowe logo i żywszy UI|10 Rebranding v2 - nowe logo i żywszy UI]]
+- [[Inbox - rozpisane updatey/10A Rebranding v2 - kolory i logo|10A Rebranding v2 - kolory i logo]]
+- [[Inbox - rozpisane updatey/10B Rebranding v2 - wdrożenie w kodzie|10B Rebranding v2 - wdrożenie w kodzie]]
+- [[Inbox - rozpisane updatey/11 Tryb ciemny i system motywów|11 Tryb ciemny i system motywów]]
+- [[Inbox - rozpisane updatey/12 Motywy kolorystyczne - wybór palety|12 Motywy kolorystyczne - wybór palety]]
+- [[Inbox - rozpisane updatey/13 Start aplikacji - nazwa i splash|13 Start aplikacji - nazwa i splash]]
 
 ## Zasady pracy
 
@@ -66,6 +74,191 @@ Notatki do późniejszej analizy:
 ```
 
 ## Nowe
+
+### 2026-06-04 - Start aplikacji pokazuje starą nazwę albo stare logo
+
+Status: Przeniesione do [[Inbox - rozpisane updatey/13 Start aplikacji - nazwa i splash|13 Start aplikacji - nazwa i splash]]
+Źródło: test na telefonie / własna obserwacja
+Obszar: branding / splash / app config / Android / Expo
+
+Opis:
+- przy ładowaniu aplikacji pojawia się stare pierwsze logo
+- pojawia się też nazwa `finanse-app`, mimo że produkt powinien być `Zenifi`
+- nowe finalne logo zostanie dostarczone później, więc teraz nie projektujemy logo
+- od razu trzeba naprawić niespójności nazwy, splash i konfiguracji startowej
+
+Dlaczego to ważne:
+- start aplikacji to pierwszy kontakt z produktem
+- stara nazwa wygląda jak niedokończony rebranding
+- testerzy mogą pomyśleć, że mają zainstalowany zły build
+- jeśli problem wynika ze starego APK/cache, trzeba mieć jasną procedurę czystej reinstalacji
+
+Notatki do późniejszej analizy:
+- aktualne `app.json` w repo wskazuje `name: Zenifi`, więc jeśli telefon pokazuje `finanse-app`, trzeba sprawdzić build/cache/native metadata
+- sprawdzić assety `icon`, `splash`, `adaptiveIcon`
+- nie zmieniać `android.package` bez decyzji, bo może to wpłynąć na instalację i dane
+- po dostarczeniu finalnego logo zrobić osobny update assetów
+
+### 2026-06-04 - Motywy jako osobna kategoria ustawień
+
+Status: Dopisane do [[Inbox - rozpisane updatey/04 Ustawienia jako centrum aplikacji|04 Ustawienia jako centrum aplikacji]], [[Inbox - rozpisane updatey/11 Tryb ciemny i system motywów|11 Tryb ciemny i system motywów]] i [[Inbox - rozpisane updatey/12 Motywy kolorystyczne - wybór palety|12 Motywy kolorystyczne - wybór palety]]
+Źródło: decyzja produktowa
+Obszar: ustawienia / motywy / UX / nawigacja
+
+Opis:
+- wybór motywu i kolorystyki nie powinien być schowany w sekcji `Aplikacja`
+- w ustawieniach ma powstać osobna kategoria `Motywy`
+- sekcja `Aplikacja` powinna zostać informacyjna
+- `Motywy` mają zawierać tryb jasny/ciemny/systemowy i wybór palety kolorystycznej
+
+Dlaczego to ważne:
+- motywy są realną konfiguracją produktu, a nie informacją o aplikacji
+- osobny kafel jest bardziej czytelny dla użytkownika
+- łatwiej będzie później rozbudować wybór palet bez przeładowania sekcji `Aplikacja`
+
+Notatki do późniejszej analizy:
+- jeśli obecny kod ma blok `Motyw` w sekcji `Aplikacja`, trzeba go przenieść do nowej sekcji `Motywy`
+- nie duplikować logiki zapisu preferencji
+- sekcja `Aplikacja` ma zawierać nazwę, wersję, tryb danych, platformę i opis offline-first
+
+### 2026-06-04 - Wybór kolorystyki aplikacji poza jasnym i ciemnym trybem
+
+Status: Przeniesione do [[Inbox - rozpisane updatey/12 Motywy kolorystyczne - wybór palety|12 Motywy kolorystyczne - wybór palety]]
+Źródło: własny pomysł
+Obszar: UI / ustawienia / motywy / personalizacja / branding
+
+Opis:
+- aplikacja powinna mieć możliwość wyboru gotowej kolorystyki
+- nie chodzi tylko o `Jasny` i `Ciemny`
+- użytkownik powinien móc wybrać np. jedną z wcześniej przygotowanych palet: `Neon Mint`, `Electric Pine`, `Signal Finance`
+- paleta powinna działać razem z trybem jasnym/ciemnym/systemowym, a nie jako osobny chaotyczny mechanizm
+
+Dlaczego to ważne:
+- daje użytkownikowi poczucie personalizacji bez budowania pełnego edytora motywu
+- pozwala wykorzystać wcześniej przygotowane palety rebrandingu
+- zwiększa atrakcyjność aplikacji bez przebudowy całego UI
+- wymusza sensowny system theme tokens zamiast hardcodowanych kolorów
+
+Notatki do późniejszej analizy:
+- najlepszy model techniczny to `themeMode + paletteId -> theme`
+- domyślna paleta powinna zostać `Neon Mint`
+- palety powinny być wybierane w `Ustawienia -> Wygląd`
+- nie wdrażać custom HEX ani pełnej personalizacji każdego koloru
+- powiązane: [[Inbox - rozpisane updatey/11 Tryb ciemny i system motywów]]
+- powiązane: [[../02 Produkt/Zenifi - Palety rebrandingu v2.html]]
+
+### 2026-06-03 - Ustawienia: reset widoku i komunikatów po opuszczeniu ekranu
+
+Status: Przeniesione do [[Inbox - rozpisane updatey/08 Ustawienia - reset stanu i komunikatów|08 Ustawienia - reset stanu i komunikatów]]
+Źródło: błąd z telefonu / własny test
+Obszar: ustawienia / backup / UX / stan ekranu
+
+Opis:
+- po eksporcie backupu w ustawieniach pozostaje powiadomienie / komunikat
+- komunikat zostaje widoczny nawet po przejściu do innego okna albo po powrocie do wyboru ustawień
+- po wyjściu z ustawień i ponownym wejściu aplikacja powinna pokazać główny wybór ustawień, a nie ostatnio otwarty konkretny podwidok
+- stan konkretnego podwidoku ustawień nie powinien zachowywać się jak trwała sesja
+
+Dlaczego to ważne:
+- komunikaty po akcji powinny być krótkotrwałe i nie zaśmiecać kolejnych wejść
+- użytkownik po powrocie do ustawień oczekuje głównego menu ustawień, a nie starego miejsca w środku flow
+- stare powiadomienie o backupie może wyglądać jak aktywny stan albo nowy wynik akcji, mimo że dotyczy poprzedniego wejścia
+
+Notatki do późniejszej analizy:
+- po opuszczeniu taba `Ustawienia` wyczyścić feedback / error / backup summary, jeśli nie jest potrzebny
+- po ponownym wejściu do ustawień pokazywać główny ekran wyboru sekcji
+- rozważyć, czy resetować też formularze PIN-u i importu backupu
+- jeżeli nie chcemy pełnego resetu wszystkich formularzy, minimum to reset aktywnej sekcji i komunikatów
+- powiązane: [[Inbox - rozpisane updatey/04 Ustawienia jako centrum aplikacji]]
+- powiązane: [[Inbox - rozpisane updatey/05 Backup do plików telefonu]]
+
+### 2026-06-03 - Historia: rozwijane szczegóły transakcji inline
+
+Status: Przeniesione do [[Inbox - rozpisane updatey/09 Historia - inline szczegóły i edycja transakcji|09 Historia - inline szczegóły i edycja transakcji]]
+Źródło: własny pomysł
+Obszar: historia / edycja transakcji / UX / małe ekrany
+
+Opis:
+- szczegóły transakcji powinny wyświetlać się po kliknięciu w konkretną transakcję
+- kliknięty element na liście powinien się rozwinąć
+- w rozwiniętym elemencie użytkownik powinien móc zmienić atrybuty transakcji i zapisać zmiany
+- obecne rozwiązanie, gdzie szczegóły pojawiają się na dole historii, jest niewygodne przy dużej liczbie transakcji
+- jeśli lista ma np. 100 transakcji, użytkownik nie powinien przewijać na dół, żeby edytować element kliknięty wyżej
+
+Dlaczego to ważne:
+- edycja transakcji powinna być bezpośrednio powiązana z elementem, którego dotyczy
+- inline expansion skraca flow i zmniejsza scrollowanie
+- użytkownik łatwiej rozumie, którą transakcję aktualnie edytuje
+- historia będzie bardziej używalna przy dużej liczbie wpisów
+
+Notatki do późniejszej analizy:
+- rozważyć tryb: kliknięcie rozwija szczegóły, drugi klik albo `Zwiń` zamyka
+- na razie może być rozwinięta tylko jedna transakcja naraz
+- edycja inline powinna korzystać z tych samych walidacji co obecny panel szczegółów
+- trzeba przemyśleć usuwanie transakcji w tym rozwiniętym stanie
+- warto połączyć ten pomysł z update'em historii i zwijanych filtrów
+- powiązane: [[Inbox - rozpisane updatey/01 Historia - filtry i domyślny zakres]]
+
+### 2026-06-03 - Tryb ciemny z przełącznikiem w ustawieniach
+
+Status: Przeniesione do [[Inbox - rozpisane updatey/11 Tryb ciemny i system motywów|11 Tryb ciemny i system motywów]]
+Źródło: własny pomysł
+Obszar: UI / ustawienia / motyw / dostępność / kolorystyka
+
+Opis:
+- aplikacja powinna dostać tryb ciemny
+- użytkownik powinien mieć możliwość zmiany motywu w `Ustawieniach`
+- tryb ciemny powinien być spójny z przyszłą żywszą kolorystyką i brandingiem aplikacji
+- ustawienie motywu powinno być zapamiętywane
+
+Dlaczego to ważne:
+- część użytkowników będzie korzystać z aplikacji wieczorem albo w słabym świetle
+- tryb ciemny zwiększa komfort codziennego używania
+- ustawienie motywu w aplikacji daje użytkownikowi kontrolę zamiast wymuszania jednego wyglądu
+- przy rebrandingu warto od razu myśleć o dwóch wersjach palety: jasnej i ciemnej
+
+Notatki do późniejszej analizy:
+- zdecydować, czy dostępne opcje to `Jasny`, `Ciemny`, `Systemowy`, czy tylko `Jasny` / `Ciemny`
+- najlepiej rozważyć opcję `Systemowy` jako domyślną, jeśli implementacja nie będzie zbyt kosztowna
+- przygotować tokeny kolorów dla obu motywów
+- sprawdzić wszystkie ekrany pod kontrast i czytelność danych finansowych
+- tryb ciemny powinien być zmianą systemową w theme, a nie lokalnym hardcodem kolorów w ekranach
+- powiązane z pomysłem: `Nowe logo i żywsza kolorystyka aplikacji`
+
+### 2026-06-03 - Nowe logo i żywsza kolorystyka aplikacji
+
+Status: Przeniesione do [[Inbox - rozpisane updatey/10 Rebranding v2 - nowe logo i żywszy UI|10 Rebranding v2 - nowe logo i żywszy UI]]
+Źródło: własny pomysł
+Obszar: branding / logo / UI / kolorystyka / zaangażowanie
+
+Opis:
+- aktualne logo jest do wymiany, bo wygląda zbyt słabo i nie buduje mocnej tożsamości aplikacji
+- kolorystyka aplikacji powinna być bardziej żywa, energetyczna i przyjemna do codziennego patrzenia
+- aplikacja nie powinna wyglądać zbyt spokojnie, płasko ani nudno
+- kierunek ma bardziej przyciągać uwagę użytkownika i dawać więcej wizualnej satysfakcji
+- logo i UI powinny być spójne, a nie wyglądać jak dwa osobne style
+
+Dlaczego to ważne:
+- aplikacja finansowa będzie używana regularnie, więc ekran musi zachęcać do powrotu
+- mocniejszy brand może pomóc odróżnić aplikację od generycznych trackerów wydatków
+- żywsze akcenty mogą poprawić odbiór dashboardu, postępu, oszczędności i pozytywnych stanów
+- obecne logo nie jest jeszcze wystarczająco mocnym znakiem produktu
+
+Notatki do późniejszej analizy:
+- przygotować nowe kierunki logo, bardziej czytelne i atrakcyjne jako ikona aplikacji
+- rozważyć bardziej nasyconą paletę, ale z zachowaniem czytelności danych finansowych
+- nie świecić całym interfejsem naraz; energia powinna być w akcentach, stanach sukcesu, ikonach, wykresach i mikrointerakcjach
+- sprawdzić kontrast tekstu i dostępność po zmianie kolorów
+- dopracować system kolorów dla:
+  - tła
+  - kart
+  - przychodów
+  - wydatków
+  - oszczędności
+  - alertów
+  - CTA
+- możliwy osobny update: `Rebranding v2 - logo i żywszy UI`
+- powiązane: [[../02 Produkt/Zenifi - rekomendacja marki]]
 
 ### 2026-06-02 - Stan pieniędzy za cały okres
 

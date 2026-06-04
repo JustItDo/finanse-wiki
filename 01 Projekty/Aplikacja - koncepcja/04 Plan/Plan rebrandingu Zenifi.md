@@ -11,6 +11,8 @@
 Na ten moment przyjmujemy:
 
 - nowa nazwa marki aplikacji: `Zenifi`
+- nazwa sklepowa / marketingowa: `Zenifi: Budżet i wydatki`
+- nazwa pod ikoną telefonu: `Zenifi`
 - preferowany znak: `zenifi-logo-v3-balance.svg`
 - kierunek kolorystyczny:
   - `#0E2F2F` jako główny kolor marki
@@ -54,6 +56,12 @@ Codex ma:
 - ustawić nazwę aplikacji na `Zenifi`
 - sprawdzić, czy jest też sens przygotować listingową nazwę sklepową osobno później
 - nie wymyślać jeszcze finalnej strategii ASO, tylko ustawić spójną nazwę roboczą produktu
+
+Aktualna decyzja po konsultacji namingowej:
+
+- nazwa systemowa / pod ikoną: `Zenifi`
+- nazwa listingowa do sklepu: `Zenifi: Budżet i wydatki`
+- krótki opis: `Twój budżet, wydatki i paragony w jednym miejscu.`
 
 ### 3. Podmiana ikon i assetów
 
@@ -146,7 +154,7 @@ Pisz po polsku i wdrażaj zmiany, nie kończ na samym opisie.
 
 Po wdrożeniu podstawowego rebrandingu można osobno zrobić:
 
-- nazwę listingową do sklepu typu `Zenifi: Budżet domowy`
+- wdrożenie nazwy listingowej `Zenifi: Budżet i wydatki` w materiałach sklepowych
 - drugą iterację ikon i splasha
 - pełniejsze dopasowanie UI do nowej marki
 
@@ -160,3 +168,7 @@ Podstawowy rebranding został już wdrożony w repo aplikacji:
 - najbardziej oczywiste stare elementy marki w UI zostały usunięte
 
 Drugi etap, jeśli będzie potrzebny, dotyczy już głównie pełniejszego dopasowania UI i sklepowego opakowania produktu.
+
+Zaakceptowane sklepowe opakowanie nazwy:
+
+- `Zenifi: Budżet i wydatki`

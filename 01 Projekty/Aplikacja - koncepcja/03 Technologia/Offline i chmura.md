@@ -22,4 +22,19 @@ Wybrany model działania danych dla MVP to `Model 2: Offline-first z opcją chmu
 ## Założenia wdrożeniowe
 - MVP działa lokalnie
 - internet nie jest wymagany do codziennego użycia
-- później można dodać sync, backup i chmurę bez zmiany głównego kierunku produktu
+- ręczny backup ZIP jest pierwszym lokalnym krokiem do przenoszenia danych między instalacjami bez chmury
+- później można dodać sync i chmurę bez zmiany głównego kierunku produktu
+
+## Wdrożenie backupu ZIP
+
+W `04.3 Backup ZIP` wdrożono ręczny eksport/import kopii danych dla aplikacji mobilnej.
+
+Backup:
+
+- przenosi dane finansowe z `SQLite`
+- przenosi pliki załączników z lokalnego katalogu aplikacji
+- nie przenosi PIN-u, biometrii ani sekretów urządzenia
+- nie wymaga backendu ani internetu
+- ma manifest przygotowany pod przyszłe szyfrowanie i upload do chmury
+
+To nadal nie jest synchronizacja. Import scala dane z lokalną bazą i nie kasuje obecnego stanu urządzenia.

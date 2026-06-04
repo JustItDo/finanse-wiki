@@ -18,7 +18,8 @@ Wybrany stack technologiczny dla MVP to `Model 2: Mobile-first z Expo i React Na
 - komputer / web: `ten sam projekt z działaniem także na webie`
 - lokalna baza danych: `SQLite`
 - OCR: `na urządzeniu`
-- backend: `dopiero później, jeśli wejdzie sync, backup albo chmura`
+- backup lokalny: `expo-file-system`, `expo-document-picker`, `expo-sharing`, `fflate`
+- backend: `dopiero później, jeśli wejdzie sync albo chmura`
 
 ## Dlaczego ten wybór
 - najlepiej pasuje do telefonu jako głównej platformy
@@ -29,4 +30,5 @@ Wybrany stack technologiczny dla MVP to `Model 2: Mobile-first z Expo i React Na
 ## Założenia wdrożeniowe
 - MVP skupia się na aplikacji działającej lokalnie
 - backend nie jest wymagany na start
+- ręczny backup ZIP działa bez backendu i bez internetu
 - architektura ma pozostać gotowa na późniejsze rozszerzenie o sync i chmurę

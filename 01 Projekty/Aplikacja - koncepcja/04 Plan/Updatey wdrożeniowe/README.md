@@ -33,6 +33,7 @@ To jest roboczy folder do przechodzenia przez wdrożenie krok po kroku.
 14. [04.0 Bezpieczeństwo](./04.0 Bezpieczeństwo.md)
 15. [04.1 Poprawki UX i wydajności](./04.1 Poprawki UX i wydajności.md)
 16. [04.2 Test MVP](./04.2 Test MVP.md)
+17. [04.3 Backup ZIP](./04.3 Backup ZIP.md)
 
 ## Najlepszy punkt wejścia
 Jeśli zaczynasz development teraz, zacznij od:
@@ -90,6 +91,11 @@ Jeśli zaczynasz development teraz, zacznij od:
   - obejmuje miesięczny, kwotowy cel oszczędności liczony jako `przychody - wydatki`
   - obejmuje ustawianie celu w `Budżetach` i pokazywanie postępu celu na `Dashboardzie`
   - obejmuje wspólną logikę postępu celu poza komponentami UI
+- `04.3 Backup ZIP`:
+  - wykonane lokalnie w repo `finanse-app`
+  - obejmuje ręczny eksport i import pliku ZIP z danymi finansowymi oraz załącznikami
+  - backup nie przenosi PIN-u, biometrii ani sekretów z `SecureStore`
+  - import scala dane po stabilnych `id` i nie kasuje lokalnego stanu
 
 ## Stan Git a stan wdrożenia
 

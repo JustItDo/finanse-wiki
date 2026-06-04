@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zenifi - Palety rebrandingu v2</title>
+  <style>
+    :root {
+      color: #172121;
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      background: #eef4f2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    .page {
+      display: grid;
+      gap: 24px;
+      margin: 0 auto;
+      max-width: 1180px;
+    }
+
+    .intro {
+      display: grid;
+      gap: 10px;
+      max-width: 760px;
+    }
+
+    .intro h1 {
+      font-size: 34px;
+      letter-spacing: 0;
+    }
+
+    .intro p {
+      color: #536160;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .palette-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .palette {
+      background: #ffffff;
+      border: 1px solid rgba(20, 40, 40, 0.1);
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(18, 36, 36, 0.09);
+      overflow: hidden;
+    }
+
+    .preview {
+      display: grid;
+      gap: 18px;
+      min-height: 360px;
+      padding: 22px;
+    }
+
+    .phone {
+      border-radius: 28px;
+      display: grid;
+      gap: 14px;
+      min-height: 300px;
+      padding: 18px;
+    }
+
+    .topline {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .dot {
+      border-radius: 999px;
+      height: 14px;
+      width: 14px;
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .amount {
+      font-size: 31px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .small {
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .row {
+      align-items: center;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .pill {
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 11px;
+    }
+
+    .bars {
+      display: grid;
+      gap: 8px;
+    }
+
+    .bar {
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+    }
+
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .swatch {
+      display: grid;
+      gap: 8px;
+      min-height: 104px;
+      padding: 12px;
+    }
+
+    .swatch strong {
+      align-self: end;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .notes {
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px 22px;
+    }
+
+    .notes h2 {
+      font-size: 20px;
+    }
+
+    .notes p {
+      color: #4d5b5a;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .electric .phone {
+      background: #f3fff8;
+      color: #082f2f;
+    }
+
+    .electric .hero-card {
+      background: #082f2f;
+      color: #f3fff8;
+    }
+
+    .electric .dot,
+    .electric .bar span {
+      background: #00e676;
+    }
+
+    .electric .pill {
+      background: #ffcf33;
+      color: #082f2f;
+    }
+
+    .electric .bar {
+      background: rgba(8, 47, 47, 0.14);
+    }
+
+    .mint .phone {
+      background: #f6fff9;
+      color: #102a2a;
+    }
+
+    .mint .hero-card {
+      background: #102a2a;
+      color: #f6fff9;
+    }
+
+    .mint .dot,
+    .mint .bar span {
+      background: #19ff8a;
+    }
+
+    .mint .pill {
+      background: #8affe0;
+      color: #102a2a;
+    }
+
+    .mint .bar {
+      background: rgba(16, 42, 42, 0.14);
+    }
+
+    .signal .phone {
+      background: #f8fafc;
+      color: #111827;
+    }
+
+    .signal .hero-card {
+      background: #111827;
+      color: #f8fafc;
+    }
+
+    .signal .dot,
+    .signal .bar span {
+      background: #12d576;
+    }
+
+    .signal .pill {
+      background: #2563eb;
+      color: #f8fafc;
+    }
+
+    .signal .bar {
+      background: rgba(17, 24, 39, 0.14);
+    }
+
+    @media (max-width: 980px) {
+      body {
+        padding: 20px;
+      }
+
+      .palette-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="intro">
+      <h1>Zenifi - palety rebrandingu v2</h1>
+      <p>Podglad trzech kierunkow kolorystycznych. To nie jest finalny ekran aplikacji, tylko szybkie porownanie nastroju, akcentow i czytelnosci.</p>
+    </section>
+
+    <section class="palette-grid">
+      <article class="palette electric">
+        <div class="preview">
+          <div class="phone">
+            <div class="topline">
+              <span class="brand">Zenifi</span>
+              <span class="dot"></span>
+            </div>
+            <div class="hero-card">
+              <span class="eyebrow">Ten miesiac</span>
+              <span class="amount">+1 248 zl</span>
+              <span class="small">Zywy fintech, ale nadal spokojna baza do finansow.</span>
+            </div>
+            <div class="row">
+              <span class="small">Cel oszczednosciowy</span>
+              <span class="pill">78%</span>
+            </div>
+            <div class="bars">
+              <div class="bar"><span style="width: 78%"></span></div>
+              <div class="bar"><span style="width: 52%; background:#00c2ff"></span></div>
+              <div class="bar"><span style="width: 22%; background:#ffcf33"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swatches">
+          <div class="swatch" style="background:#082f2f;color:#f3fff8"><strong>#082F2F<br>base</strong></div>
+          <div class="swatch" style="background:#00e676;color:#082f2f"><strong>#00E676<br>success</strong></div>
+          <div class="swatch" style="background:#00c2ff;color:#082f2f"><strong>#00C2FF<br>tech</strong></div>
+          <div class="swatch" style="background:#ffcf33;color:#082f2f"><strong>#FFCF33<br>spark</strong></div>
+          <div class="swatch" style="background:#f3fff8;color:#082f2f"><strong>#F3FFF8<br>bg</strong></div>
+        </div>
+        <div class="notes">
+          <h2>Electric Pine</h2>
+          <p>Najlepszy kompromis: zostawia Zenifi w klimacie zaufania i finansow, ale dodaje mocniejszy impuls wizualny.</p>
+        </div>
+      </article>
+
+      <article class="palette mint">
+        <div class="preview">
+          <div class="phone">
+            <div class="topline">
+              <span class="brand">Zenifi</span>
+              <span class="dot"></span>
+            </div>
+            <div class="hero-card">
+              <span class="eyebrow">Ten miesiac</span>
+              <span class="amount">+1 248 zl</span>
+              <span class="small">Najbardziej swiezy i lekki wariant, ale mniej finansowy.</span>
+            </div>
+            <div class="row">
+              <span class="small">Cel oszczednosciowy</span>
+              <span class="pill">78%</span>
+            </div>
+            <div class="bars">
+              <div class="bar"><span style="width: 78%"></span></div>
+              <div class="bar"><span style="width: 52%; background:#8affe0"></span></div>
+              <div class="bar"><span style="width: 22%; background:#ffb84d"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swatches">
+          <div class="swatch" style="background:#102a2a;color:#f6fff9"><strong>#102A2A<br>base</strong></div>
+          <div class="swatch" style="background:#19ff8a;color:#102a2a"><strong>#19FF8A<br>accent</strong></div>
+          <div class="swatch" style="background:#8affe0;color:#102a2a"><strong>#8AFFE0<br>mint</strong></div>
+          <div class="swatch" style="background:#ffb84d;color:#102a2a"><strong>#FFB84D<br>warm</strong></div>
+          <div class="swatch" style="background:#f6fff9;color:#102a2a"><strong>#F6FFF9<br>bg</strong></div>
+        </div>
+        <div class="notes">
+          <h2>Neon Mint</h2>
+          <p>Najbardziej dopaminowy wariant. Przyjemny, ale ryzykuje skojarzenie z wellness zamiast finansami.</p>
+        </div>
+      </article>
+
+      <article class="palette signal">
+        <div class="preview">
+          <div class="phone">
+            <div class="topline">
+              <span class="brand">Zenifi</span>
+              <span class="dot"></span>
+            </div>
+            <div class="hero-card">
+              <span class="eyebrow">Ten miesiac</span>
+              <span class="amount">+1 248 zl</span>
+              <span class="small">Najbardziej klasyczny fintech, czytelny i bezpieczny.</span>
+            </div>
+            <div class="row">
+              <span class="small">Cel oszczednosciowy</span>
+              <span class="pill">78%</span>
+            </div>
+            <div class="bars">
+              <div class="bar"><span style="width: 78%"></span></div>
+              <div class="bar"><span style="width: 52%; background:#2563eb"></span></div>
+              <div class="bar"><span style="width: 22%; background:#facc15"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swatches">
+          <div class="swatch" style="background:#111827;color:#f8fafc"><strong>#111827<br>base</strong></div>
+          <div class="swatch" style="background:#12d576;color:#111827"><strong>#12D576<br>success</strong></div>
+          <div class="swatch" style="background:#2563eb;color:#f8fafc"><strong>#2563EB<br>trust</strong></div>
+          <div class="swatch" style="background:#facc15;color:#111827"><strong>#FACC15<br>goal</strong></div>
+          <div class="swatch" style="background:#f8fafc;color:#111827"><strong>#F8FAFC<br>bg</strong></div>
+        </div>
+        <div class="notes">
+          <h2>Signal Finance</h2>
+          <p>Najbezpieczniejszy i najbardziej finansowy. Mniej unikalny, ale bardzo czytelny.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

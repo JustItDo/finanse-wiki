@@ -31,6 +31,7 @@ Rules:
 - Treat project files as the source of truth.
 - Work concretely in files, not only in explanation.
 - When code changes are needed, work in the app repository rather than only in the vault.
+- Use Codex directly for tests and test planning. The LM Studio MCP workflow is currently disabled because it caused MCP startup timeouts.
 - Write in Polish unless the task clearly requires another language.
 - After each meaningful project change, check whether the wiki should be updated.
 - If the change affects project structure, workflow, decisions, roadmap, implementation status, or team working rules, update the appropriate wiki files directly.

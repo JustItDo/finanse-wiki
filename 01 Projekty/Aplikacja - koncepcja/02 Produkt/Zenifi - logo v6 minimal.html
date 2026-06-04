@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zenifi - logo v6 minimal</title>
+  <style>
+    :root {
+      background: #f6fff9;
+      color: #102a2a;
+      font-family: "Aptos", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    .page {
+      display: grid;
+      gap: 24px;
+      margin: 0 auto;
+      max-width: 1020px;
+    }
+
+    .intro {
+      display: grid;
+      gap: 10px;
+      max-width: 760px;
+    }
+
+    .intro h1 {
+      font-size: 34px;
+    }
+
+    .intro p {
+      color: #46615c;
+      line-height: 1.5;
+    }
+
+    .rules {
+      background: #102a2a;
+      border-radius: 22px;
+      color: #f6fff9;
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+    }
+
+    .rules p {
+      color: #c9f7e1;
+      line-height: 1.45;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid rgba(16, 42, 42, 0.12);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(16, 42, 42, 0.09);
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .icon {
+      background: #102a2a;
+      border-radius: 28px;
+      display: grid;
+      overflow: hidden;
+      place-items: center;
+    }
+
+    .icon img {
+      display: block;
+      width: 100%;
+    }
+
+    .meta {
+      display: grid;
+      gap: 8px;
+    }
+
+    .meta h2 {
+      font-size: 17px;
+    }
+
+    .meta p {
+      color: #536a65;
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    .rating {
+      background: #19ff8a;
+      border-radius: 999px;
+      color: #102a2a;
+      display: inline-flex;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 9px;
+      width: fit-content;
+    }
+
+    @media (max-width: 920px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="intro">
+      <h1>Zenifi - logo v6 minimal</h1>
+      <p>Prostsze kierunki po odrzuceniu zbyt zlozonych wariantow. Zostaje paleta Neon Mint, ale znak ma miec mniej elementow i dzialac w realnej ikonie aplikacji.</p>
+    </section>
+
+    <section class="rules">
+      <h2>Zasada v6</h2>
+      <p>Maksymalnie jeden glowny symbol, jeden akcent i grube, czytelne ksztalty. Bez detali nachodzacych na siebie i bez kilku historii w jednej ikonie.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="icon"><img src="zenifi-logo-v6-01-wallet-dot.svg" alt="Wallet Outline"></div>
+        <div class="meta">
+          <span class="rating">Najprostsze finansowo</span>
+          <h2>01 Wallet Outline</h2>
+          <p>Kontur portfela/karty i jeden punkt. Malo elementow, czytelne w malym rozmiarze.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon"><img src="zenifi-logo-v6-02-budget-bars.svg" alt="Budget Bars"></div>
+        <div class="meta">
+          <span class="rating">Najbardziej app-store</span>
+          <h2>02 Budget Bars</h2>
+          <p>Trzy slupki i cel. Finansowe, dynamiczne, ale bardziej generyczne niz portfel.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon"><img src="zenifi-logo-v6-03-check-card.svg" alt="Check Card"></div>
+        <div class="meta">
+          <span class="rating">Najbardziej praktyczne</span>
+          <h2>03 Check Card</h2>
+          <p>Karta i check. Komunikuje ogarnianie wydatkow, zapis i kontrole.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon"><img src="zenifi-logo-v6-04-goal-line.svg" alt="Goal Line"></div>
+        <div class="meta">
+          <span class="rating">Najbardziej abstrakcyjne</span>
+          <h2>04 Goal Line</h2>
+          <p>Jedna linia wzrostu i punkt celu. Proste, ale mniej jednoznaczne jako finanse.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

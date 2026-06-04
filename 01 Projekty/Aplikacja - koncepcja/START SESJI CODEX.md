@@ -85,9 +85,11 @@ W projekcie i w aktywnym katalogu `~/.codex/skills` są dostępne:
 - `service-diagnosis`
 - `skill-router`
 
-Dodatkowe lokalne narzędzie workflow:
+Dodatkowe lokalne narzędzia workflow:
 
-- MCP tool `lmstudio_unit_tests` do szkicowania wąskich testów jednostkowych lokalnym modelem `LM Studio`
+- MCP tool `lmstudio_unit_tests` jest obecnie wyłączony
+- powód: `lmstudio-unit-tests` powodował timeout startu MCP i ostrzeżenie `MCP startup incomplete`
+- testy i planowanie testów robimy na razie bezpośrednio przez Codexa oraz lokalne komendy projektu
 
 ## Jak zaczynać nową sesję
 

@@ -72,6 +72,19 @@ Najważniejsze katalogi:
   - bundle identifier / package pod kolejne buildy
   - ikona aplikacji, adaptive icon, splash i favicon
   - bazowy kierunek kolorystyczny zgodny z notatką marki
+- rebranding v2 został wdrożony lokalnie na bazie decyzji `Neon Mint` i kierunku logo `Z + wykres`:
+  - źródłowe SVG i PNG ikon korzystają z nowego znaku
+  - `src/shared/theme` ma strukturę `lightTheme` i semantyczne tokeny kolorów pod późniejszy dark mode
+  - CTA, sukcesy, ostrzeżenia, danger i wybrane stany wykresowo-budżetowe korzystają z tokenów zamiast lokalnych HEX-ów
+- system motywów został wdrożony lokalnie:
+  - dostępne są preferencje `Systemowy`, `Jasny` i `Ciemny`
+  - preferencja motywu zapisuje się lokalnie poza SQLite, natywnie przez `expo-secure-store`, a na webie przez `localStorage`
+  - `ThemeProvider` rozwiązuje tryb systemowy przez `useColorScheme`
+  - `StatusBar`, nawigacja tabowa, wspólne komponenty UI i kluczowe ekrany korzystają z bieżącego motywu
+  - finalny theme powstaje z `themeMode + paletteId`
+  - dostępne palety to `Neon Mint`, `Electric Pine` i `Signal Finance`
+  - domyślna paleta to `Neon Mint`
+  - `Ustawienia -> Motywy` zawiera przełącznik trybu i wybór palety, a `Ustawienia -> Aplikacja` pozostało sekcją informacyjną
 - osobny moduł `security` spięty providerem nad nawigacją
 - root `SafeAreaProvider` działa teraz z `initialWindowMetrics`, żeby bezpieczne insets były stabilniejsze od pierwszego renderu
 
@@ -82,10 +95,18 @@ Najważniejsze katalogi:
 - repozytoria dla:
   - `transactions`
   - `attachments`
+  - `backup`
   - `categories`
   - `category_budgets`
   - `monthly_budgets`
 - fallback webowy z tym samym kontraktem repozytoriów
+- ręczny backup ZIP dla aplikacji mobilnej:
+  - przycisk `Utwórz backup` przygotowuje plik `zenifi-backup-YYYY-MM-DD-HH-mm.zip` w cache
+  - po przygotowaniu pliku użytkownik wybiera `Zapisz do plików` albo `Udostępnij`
+  - import używa systemowego pickera dokumentów i scala dane z lokalną bazą
+  - format backupu zawiera `manifest.json`, `data.json` oraz pliki załączników
+  - w `data.json` nie ma lokalnych `fileUri`, są stabilne metadane i `backupPath`
+  - web w tej wersji ma tylko jawny komunikat o braku mobilnego ZIP backupu
 
 ### Budżety i kategorie
 
@@ -108,14 +129,18 @@ Najważniejsze katalogi:
 - sekcja `Aktywne bez limitu` została uproszczona do `Kategorie bez limitu`, a główna sekcja limitów do `Kategorie z limitem`
 - usunięcie kategorii odłącza stare transakcje od tej kategorii i czyści jej limit miesięczny
 - użytkownik może też ustawić ikonę kategorii, która pojawia się potem na dashboardzie
+- limit kategorii `0 zł` jest teraz oficjalnie traktowany jak `Bez limitu` w logice budżetów, UI i walidacji, bez migracji modelu danych
 
 ### Analizy
 
 - osobny ekran `Analizy` w nawigacji tabowej
-- przełącznik zakresu `bieżący miesiąc` / `poprzedni miesiąc`
+- kompaktowy przycisk aktualnego okresu z wysuwanym selektorem zakresu
+- obsługiwane zakresy analizy: `Ten miesiąc`, `Poprzedni miesiąc`, `3 miesiące`, `6 miesięcy`, `Rok`, `Cały okres`
+- karta `Bilans okresu` pokazuje wynik zapisanych transakcji jako `przychody - wydatki`, bez sugerowania salda konta bankowego
+- breakdown bilansu pokazuje `Przychody`, `Wydatki` i `Wynik` dla aktualnego zakresu analizy
 - wykres udziału wydatków według kategorii
 - widok największych kategorii kosztów
-- wykres trendu dziennego wydatków
+- wykres trendu dziennego dla pojedynczego miesiąca i miesięcznego dla zakresów wielomiesięcznych
 - lekka warstwa agregacji poza UI współdzieląca:
   - podsumowanie miesiąca
   - sumy kategorii
@@ -133,6 +158,7 @@ Najważniejsze katalogi:
 
 - ekran historii transakcji z filtrowaniem, wyszukiwaniem, szczegółem, prostą edycją i usuwaniem
 - historia pozwala teraz filtrować także przez `Wszystkie miesiące`
+- szczegóły i edycja transakcji w historii rozwijają się inline pod klikniętym rekordem, z jedną aktywną transakcją naraz
 - działający flow wyboru obrazu, załączników, OCR i korekty
 - zapis załącznika został poprawiony pod `Expo 56` po usunięciu zależności od deprecated `FileSystem.copyAsync`
 - flow OCR waliduje teraz istnienie lokalnego pliku po kopiowaniu, zanim przekaże go do rozpoznawania tekstu
@@ -165,10 +191,17 @@ Najważniejsze katalogi:
   - na webie przez fallback przeglądarkowy
 - po starcie aplikacji z aktywną blokadą użytkownik musi ponownie odblokować dostęp
 - po dłuższym przejściu aplikacji do tła i wznowieniu dane nie zostają widoczne bez ponownego odblokowania
-- dodana została zakładka `Bezpieczeństwo` z konfiguracją PIN-u, biometrii i wyłączenia blokady
+- konfiguracja PIN-u, biometrii i wyłączenia blokady jest teraz dostępna w zakładce `Ustawienia`
 - pełne szyfrowanie lokalnej bazy i załączników nie weszło do `04.0`; obecny etap daje sensowną ochronę MVP, ale nie pełne szyfrowanie danych spoczynkowych
 - w `04.2` poprawiono sesję bezpieczeństwa tak, żeby krótkie wejście do aparatu lub galerii nie zrywało OCR i aktywnego flow użytkownika
 - po pakiecie dopracowań auto-biometria próbuje odblokowania tylko raz po blokadzie, a po anulowaniu nadal można normalnie wejść PIN-em
+- zakładka `Ustawienia` zawiera teraz sekcję `Kopia danych` do eksportu i importu backupu ZIP
+- zakładka `Ustawienia` działa teraz jako centrum aplikacji z kaflami `Bezpieczeństwo`, `Backup i dane`, `Synchronizacja` i `Aplikacja`
+- szczegóły `Bezpieczeństwo` i `Backup i dane` zachowują istniejące akcje PIN-u, biometrii oraz importu backupu, a eksport działa jako przygotowanie ZIP-a z wyborem zapisu do plików albo udostępnienia
+- po opuszczeniu taba `Ustawienia` albo po lokalnym powrocie do centrum ustawień ekran wraca do głównego menu i czyści krótkotrwałe komunikaty oraz podsumowanie backupu
+- kafel `Synchronizacja` jest tylko informacją o funkcji przyszłej, bez wdrażania realnego syncu
+- backup nie przenosi PIN-u, biometrii ani sekretów z `SecureStore`
+- pierwsza wersja backupu ZIP nie jest szyfrowana, więc plik kopii należy traktować jak wrażliwy plik z danymi finansowymi
 
 ### Ręczne transakcje
 
@@ -201,18 +234,29 @@ Bieżący workspace zawiera teraz jeszcze lokalną implementację `Paczki 3` i `
 
 - poprawiony keyboard-aware scroll dla formularzy
 - poprawione bottom insets i wysokość tabbara
-- lepsze zachowanie na małych ekranach telefonu w `Dodaj transakcję`, `Budżety`, `Historia` i `Bezpieczeństwo`
-- przy pierwszym uruchomieniu pojawia się pytanie o ustawienie PIN-u z przejściem do zakładki `Bezpieczeństwo`
+- lepsze zachowanie na małych ekranach telefonu w `Dodaj transakcję`, `Budżety`, `Historia` i `Ustawienia`
+- przy pierwszym uruchomieniu pojawia się pytanie o ustawienie PIN-u z przejściem do zakładki `Ustawienia`
 - ekran odblokowania dostał 4 pola PIN-u z maskowaniem cyfr kropkami i prostsze copy
 - wyłączenie biometrii wymaga teraz potwierdzenia biometrią albo PIN-em
 - aktywna sesja nadal chroni zwykłe powroty z aparatu i galerii przed zbędnym ponownym PIN-em
 - obszar `Budżety` dostał też lokalną implementację `Paczki 2` z CRUD-em kategorii i lżejszym widokiem listy + szczegółu
 - `Historia` i `Dashboard` dostały też lokalną implementację `Paczki 1` z filtrem `Wszystkie miesiące` i lżejszym copy głównych sekcji
 
+Bieżący workspace zawiera także lokalną implementację `04.3 Backup ZIP`:
+
+- dodane zależności `expo-document-picker`, `expo-sharing` i `fflate`
+- dodane repozytorium backupu nad SQLite i Expo FileSystem
+- dodana sekcja eksportu/importu w zakładce `Ustawienia`
+- import waliduje manifest, wersję backupu, ścieżki ZIP i referencje przed zapisem
+- import scalający działa bez kasowania lokalnych danych
+- `npm run typecheck` i `npm run lint` przechodzą
+- ręczny smoke test na urządzeniu pozostaje do wykonania
+
 ## Najbliższy krok Git
 
-- przygotować commit dla `Paczki 1`, `Paczki 2`, `Paczki 3` i `Paczki 4`
+- przygotować commit dla `Paczki 1`, `Paczki 2`, `Paczki 3`, `Paczki 4` oraz `04.3 Backup ZIP`, najlepiej jako osobne logiczne commity, jeśli da się rozdzielić zakresy
 - potem zrobić ręczny test telefonu pod historię, dashboard, kategorie, budżety, klawiaturę, scroll, onboarding PIN-u i blokadę biometryczną
+- dodatkowo zrobić ręczny test backupu ZIP na Androidzie: eksport, import na czystej instalacji, ponowny import bez duplikatów i import na istniejących danych
 - następnym krokiem po tym pakiecie jest kolejna selekcja tylko tych poprawek, które wyjdą z realnego użycia
 
 Po wdrożeniu podstawowego rebrandingu `Zenifi` następnym osobnym krokiem może być już tylko drugi etap marki:
@@ -220,6 +264,17 @@ Po wdrożeniu podstawowego rebrandingu `Zenifi` następnym osobnym krokiem może
 - pełniejsze dopasowanie UI do nowej marki
 - druga iteracja splasha i ewentualnie sklepowej nazwy listingowej
 - sprawdzenie buildów urządzeniowych już pod nową nazwą i ikonami
+
+Po update `13 Start aplikacji - nazwa i splash` konfiguracja Expo i lokalnie wygenerowany Android są spójne dla nazwy startowej:
+
+- `app.json` ma `name: Zenifi`, `slug: zenifi`, `scheme: zenifi` i `android.package: com.justitdo.zenifi`
+- `package.json` ma nazwę techniczną `zenifi-app`
+- aktywne assety Expo dla `icon`, `splash`, `adaptiveIcon` i `favicon` wskazują na tymczasowy brand Zenifi
+- lokalny folder `android/` jest ignorowany przez Git, ale jeśli istnieje w workspace, wpływa na `expo run:android` i lokalne APK
+- w lokalnym `android/` usunięto stare `finanse-app`, domyślne ikony/splash Expo oraz `com.anonymous.finanseapp`
+- natywne pliki wejściowe `MainActivity.kt` i `MainApplication.kt` muszą leżeć w ścieżce `android/app/src/main/java/com/justitdo/zenifi/`, bo generator autolinkingu Expo/RN bierze z tego model projektu Androida
+- po zmianie pakietu trzeba usunąć wygenerowany cache `android/build/generated/autolinking` i `android/app/build/generated/autolinking`, inaczej build może nadal generować odwołania do starego `com.anonymous.finanseapp.BuildConfig`
+- jeśli telefon nadal pokazuje starą nazwę albo ikonę, najbardziej prawdopodobną przyczyną jest stary APK/dev build/cache; trzeba odinstalować stare pakiety z telefonu i wykonać czysty rebuild
 
 ## Znaczenie dla kolejnych etapów
 
@@ -236,3 +291,9 @@ Dodatkowe lokalne dopracowania po testach telefonu obejmują też:
 - wspólny górny inset safe area po ukryciu headerów tabów
 - automatyczne odświeżanie kategorii na ekranie `Dodaj transakcję` po powrocie z `Budżetów`
 - prostsze, mniej techniczne nazewnictwo trybu dodawania z obrazu zamiast eksponowania słowa `OCR`
+
+Podsumowując stan na koniec dnia:
+
+- podstawowy rebranding `Zenifi` jest już zapisany i opisany
+- poprawki UX po testach telefonu też są w pełni uwzględnione w wiki
+- lokalny APK nie jest docelowym artefaktem repozytorium; do udostępnienia ma iść przez GitHub Releases

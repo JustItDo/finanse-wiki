@@ -18,7 +18,7 @@
 ## Do omówienia
 - dokładna lista kategorii startowych
 - wybór i konfiguracja runnera testów jednostkowych dla `finanse-app`
-- standard pracy `Codex + LM Studio` dla wąskich testów jednostkowych
+- ewentualny powrót do `LM Studio` dopiero po rozwiązaniu timeoutów MCP
 - wybrać priorytet wdrażania z [[Inbox - rozpisane updatey/README|rozpisanych update'ów z inboxu]]
 
 ## Do rozpisania

@@ -36,6 +36,20 @@ Wybrany model prywatności i bezpieczeństwa dla MVP to `Model 2: Zbalansowany`.
 - załączniki i rekordy finansowe pozostają zapisane lokalnie tak jak dotąd, więc pełne szyfrowanie danych spoczynkowych jest tematem na późniejszy etap
 - pełny test `Face ID` na iOS wymaga development builda, bo `Expo Go` nie pokrywa tego scenariusza
 
+## Backup ZIP w `04.3`
+
+Ręczny backup ZIP przenosi dane finansowe i załączniki, ale nie przenosi sekretów bezpieczeństwa.
+
+Do backupu nie trafiają:
+
+- PIN
+- ustawienie biometrii jako sekret odblokowania
+- wartości z `SecureStore`
+
+Pierwsza wersja ZIP-a nie jest szyfrowana. To oznacza, że wyeksportowany plik należy traktować jak wrażliwy dokument użytkownika.
+
+Import działa przez scalanie z lokalnym stanem i nie resetuje ustawień bezpieczeństwa aplikacji.
+
 ## Ważne zastrzeżenie na przyszłość
 Jeżeli w dalszych iteracjach produktu pojawi się model biznesowy oparty częściowo o dane użytkowników, to będzie to wymagało:
 

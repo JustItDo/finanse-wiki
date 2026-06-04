@@ -79,6 +79,10 @@ Można zaczynać development, jeśli:
 
 ### Wynik etapu
 - aplikacja jest gotowa do regularnego używania bez dużych tarć
+- po domknięciu `04.2` wchodzi szybki follow-up bezpieczeństwa i UX sesji:
+  - sesja po PIN-ie albo biometrii ma być utrzymywana
+  - dodanie paragonu nie może prosić o PIN po każdej operacji
+  - ponowna autoryzacja ma wracać tylko po timeoutcie sesji albo przy akcjach wrażliwych
 
 ## Etap 7 - V1 po MVP
 - alerty o nietypowych wydatkach i przekroczeniach

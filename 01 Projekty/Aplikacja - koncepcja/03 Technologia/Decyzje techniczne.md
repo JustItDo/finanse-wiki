@@ -27,6 +27,7 @@
 - model user flow dla MVP: `Model 2: Zbalansowany`
 - stack technologiczny dla MVP: `Model 2: Mobile-first z Expo i React Native`
 - model danych pod implementację dla MVP: `Model 2: Zbalansowany schemat implementacyjny`
+- model backupu dla lokalnego MVP: `ręczny ZIP bez chmury i bez sekretów urządzenia`
 - aplikacja ma być `mobile-first`, ale ma też działać wygodnie na komputerze
 - na start skupiamy się na prostym i używalnym MVP, a większa złożoność produktu wchodzi dopiero w kolejnych iteracjach
 - w dalszym etapie możliwa jest bardziej zaawansowana warstwa produktu, potencjalnie także w modelu premium
@@ -36,7 +37,8 @@
 - komputer / web: `ten sam projekt z działaniem także na webie`
 - lokalna baza danych: `SQLite`
 - OCR: `na urządzeniu`
-- backend: `później, jeśli będzie potrzebny sync, backup lub chmura`
+- backup: `ręczny ZIP przez FileSystem, DocumentPicker, Sharing i fflate`
+- backend: `później, jeśli będzie potrzebny sync lub chmura`
 - dane implementacyjne MVP: `transactions`, `attachments`, `categories`, `category_budgets`, `monthly_budgets`
 
 ## Platformy docelowe

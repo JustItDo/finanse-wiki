@@ -1,0 +1,5 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zenifi minimal goal line logo concept">
+  <rect x="64" y="64" width="896" height="896" rx="224" fill="#102A2A"/>
+  <path d="M286 638L430 530L546 584L732 386" fill="none" stroke="#19FF8A" stroke-width="82" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="732" cy="386" r="58" fill="#FFB84D"/>
+</svg>
